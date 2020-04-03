@@ -31,13 +31,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Optional<Employee> findEmloyeeByUsername(String userName) {
-        return employeeRepository.findByUserName(userName);
+    public Employee findEmloyeeByUsername(String userName) {
+        return employeeRepository.findByUserName(userName).orElse(null);
     }
 
     @Override
     public boolean saveEmployee(@Valid Employee employee) {
-        if(findEmloyeeByUsername(employee.getUserName()).isPresent())
+        if(findEmloyeeByUsername(employee.getUserName()) != null)
             return false;
         employee.setId(nextSequenceService.getNewId(employeeRepository,sequenceName));
         //e.setUserName(userName);

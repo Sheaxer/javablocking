@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface EmployeeService {
 
-    Optional<Employee> findEmloyeeByUsername(String userName);
+    Employee findEmloyeeByUsername(String userName);
 
     boolean saveEmployee(Employee employee);
 
