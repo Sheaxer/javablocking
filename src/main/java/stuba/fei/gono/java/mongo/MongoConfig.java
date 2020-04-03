@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.blocking.mongo;
+package stuba.fei.gono.java.mongo;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
