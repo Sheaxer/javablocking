@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.blocking.mongo.data.converters;
+package stuba.fei.gono.java.mongo.converters;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

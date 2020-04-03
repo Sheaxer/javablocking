@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import stuba.fei.gono.java.blocking.mongo.data.repositories.EmployeeRepository;
+import stuba.fei.gono.java.blocking.mongo.repositories.EmployeeRepository;
 import stuba.fei.gono.java.pojo.Employee;
 import stuba.fei.gono.java.services.EmployeeService;
 

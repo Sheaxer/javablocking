@@ -9,10 +9,10 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Service;
-import stuba.fei.gono.java.blocking.mongo.data.repositories.ClientRepository;
-import stuba.fei.gono.java.blocking.mongo.data.repositories.EmployeeRepository;
-import stuba.fei.gono.java.blocking.mongo.data.repositories.OrganisationUnitRepository;
-import stuba.fei.gono.java.blocking.mongo.data.repositories.ReportedOverlimitTransactionRepository;
+import stuba.fei.gono.java.blocking.mongo.repositories.ClientRepository;
+import stuba.fei.gono.java.blocking.mongo.repositories.EmployeeRepository;
+import stuba.fei.gono.java.blocking.mongo.repositories.OrganisationUnitRepository;
+import stuba.fei.gono.java.blocking.mongo.repositories.ReportedOverlimitTransactionRepository;
 import stuba.fei.gono.java.pojo.*;
 
 import javax.validation.constraints.NotNull;

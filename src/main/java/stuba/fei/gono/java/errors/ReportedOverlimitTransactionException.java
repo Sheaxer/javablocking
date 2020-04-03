@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.blocking.errors;
+package stuba.fei.gono.java.errors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseBody;

@@ -1,9 +1,9 @@
-package stuba.fei.gono.java.blocking.mongo.data.converters;
+package stuba.fei.gono.java.mongo.converters;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import stuba.fei.gono.java.blocking.mongo.data.repositories.EmployeeRepository;
+import stuba.fei.gono.java.blocking.mongo.repositories.EmployeeRepository;
 import stuba.fei.gono.java.pojo.Employee;
 
 @Component

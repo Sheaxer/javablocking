@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.blocking.mongo.data.converters;
+package stuba.fei.gono.java.mongo.converters;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.ReadingConverter;

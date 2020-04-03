@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
-import stuba.fei.gono.java.blocking.mongo.data.converters.OffsetDateTimeReadConverter;
-import stuba.fei.gono.java.blocking.mongo.data.converters.OffsetDateTimeWriteConverter;
-import stuba.fei.gono.java.blocking.mongo.data.converters.ZonedDateTimeReadConverter;
-import stuba.fei.gono.java.blocking.mongo.data.converters.ZonedDateTimeWriteConverter;
+import stuba.fei.gono.java.mongo.converters.OffsetDateTimeReadConverter;
+import stuba.fei.gono.java.mongo.converters.OffsetDateTimeWriteConverter;
+import stuba.fei.gono.java.mongo.converters.ZonedDateTimeReadConverter;
+import stuba.fei.gono.java.mongo.converters.ZonedDateTimeWriteConverter;
 
 import java.util.ArrayList;
 import java.util.List;

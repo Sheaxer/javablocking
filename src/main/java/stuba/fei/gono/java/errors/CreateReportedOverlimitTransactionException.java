@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.blocking.errors;
+package stuba.fei.gono.java.errors;
 
 public class CreateReportedOverlimitTransactionException extends RuntimeException {
 
