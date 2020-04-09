@@ -41,10 +41,10 @@ public class TransactionController {
      */
     @GetMapping(value = "/{id}",produces = "application/json")
     @ResponseBody
-    public ResponseEntity<ReportedOverlimitTransaction> getTransaction(@PathVariable String id)
+    @ResponseStatus(HttpStatus.OK)
+    public ReportedOverlimitTransaction getTransaction(@PathVariable String id)
     {
-        ReportedOverlimitTransaction transaction = transactionService.getTransactionById(id);
-        return new ResponseEntity<>(transaction,HttpStatus.OK);
+        return transactionService.getTransactionById(id);
     }
 
     /*@GetMapping(value = "/{id}")
@@ -64,10 +64,10 @@ public class TransactionController {
 
     @PostMapping(produces = "application/json")
     @ResponseBody
-    public ResponseEntity<ReportedOverlimitTransaction> postTransaction(@Valid @RequestBody ReportedOverlimitTransaction newTransaction)
+    @ResponseStatus(HttpStatus.OK)
+    public ReportedOverlimitTransaction postTransaction(@Valid @RequestBody ReportedOverlimitTransaction newTransaction)
     {
-        ReportedOverlimitTransaction transaction = transactionService.postTransaction(newTransaction);
-        return new ResponseEntity<>(transaction,HttpStatus.CREATED);
+        return transactionService.postTransaction(newTransaction);
     }
 
     /*@PostMapping
@@ -95,16 +95,16 @@ public class TransactionController {
      * @see ReportedOverlimitTransaction
      * @see State
      * @param id id of ReportedOverlimitTransaction that should be deleted
-     * @return deleted ReportedOverlimitTransaction
      * @throws ReportedOverlimitTransactionException if requested ReportedOverlimitTransaction cannot be deleted
      * either because it's state is not CLOSED or there is isn't one with requested it stored.
      */
     @DeleteMapping(value = "/{id}", produces = "application/json")
     @ResponseBody
-    public ResponseEntity<ReportedOverlimitTransaction> deleteTransaction(@PathVariable String id)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteTransaction(@PathVariable String id)
     {
-        ReportedOverlimitTransaction transaction = transactionService.deleteTransaction(id);
-        return new ResponseEntity<>(transaction,HttpStatus.OK);
+       transactionService.deleteTransaction(id);
+
     }
     /*@DeleteMapping(value = "/{id}")
     public ResponseEntity<ReportedOverlimitTransaction> deleteTransaction(@PathVariable String id)
@@ -130,14 +130,15 @@ public class TransactionController {
 
     @PutMapping(value = "/{id}", produces = "application/json")
     @ResponseBody
-    public ResponseEntity<ReportedOverlimitTransaction> putTransaction(@PathVariable String id, @Valid @RequestBody ReportedOverlimitTransaction transaction)
+    @ResponseStatus(HttpStatus.OK)
+    public ReportedOverlimitTransaction putTransaction(@PathVariable String id, @Valid @RequestBody ReportedOverlimitTransaction transaction)
     {
-        transaction = transactionService.putTransaction(id,transaction);
-        return new ResponseEntity<>(transaction,HttpStatus.OK);
+       return transactionService.putTransaction(id,transaction);
+
     }
 
     @PostMapping(value="/{id}", produces = "application/json")
-    public ResponseEntity<ReportedOverlimitTransaction> postTransaction(@PathVariable String id, @Valid @RequestBody ReportedOverlimitTransaction transaction)
+    public ReportedOverlimitTransaction postTransaction(@PathVariable String id, @Valid @RequestBody ReportedOverlimitTransaction transaction)
     {
         return putTransaction(id,transaction);
     }
