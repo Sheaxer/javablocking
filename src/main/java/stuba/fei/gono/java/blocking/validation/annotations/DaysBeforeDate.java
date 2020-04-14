@@ -1,6 +1,6 @@
-package stuba.fei.gono.java.validation.annotations;
+package stuba.fei.gono.java.blocking.validation.annotations;
 
-import stuba.fei.gono.java.validation.BankingDayValidator;
+import stuba.fei.gono.java.blocking.validation.DaysBeforeDateValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,14 +9,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/***
- * Annotation for validation o
- */
 @Target(ElementType.FIELD)
-@Constraint(validatedBy = BankingDayValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface BankingDay {
+@Constraint(validatedBy = DaysBeforeDateValidator.class)
+public @interface DaysBeforeDate {
     String message() default "";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
+    long days() default 0L;
 }

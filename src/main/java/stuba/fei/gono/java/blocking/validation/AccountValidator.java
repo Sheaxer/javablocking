@@ -1,7 +1,7 @@
-package stuba.fei.gono.java.validation;
+package stuba.fei.gono.java.blocking.validation;
 
 import stuba.fei.gono.java.pojo.Account;
-import stuba.fei.gono.java.validation.annotations.ValidAccount;
+import stuba.fei.gono.java.blocking.validation.annotations.ValidAccount;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

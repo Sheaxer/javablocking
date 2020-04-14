@@ -1,8 +1,8 @@
-package stuba.fei.gono.java.validation;
+package stuba.fei.gono.java.blocking.validation;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import stuba.fei.gono.java.validation.annotations.DaysBeforeDate;
+import stuba.fei.gono.java.blocking.validation.annotations.DaysBeforeDate;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

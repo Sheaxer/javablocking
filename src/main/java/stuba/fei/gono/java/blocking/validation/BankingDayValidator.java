@@ -1,6 +1,6 @@
-package stuba.fei.gono.java.validation;
+package stuba.fei.gono.java.blocking.validation;
 
-import stuba.fei.gono.java.validation.annotations.BankingDay;
+import stuba.fei.gono.java.blocking.validation.annotations.BankingDay;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

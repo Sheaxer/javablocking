@@ -1,7 +1,7 @@
 package stuba.fei.gono.java.pojo;
 
 import lombok.Data;
-import stuba.fei.gono.java.validation.annotations.MaxAmount;
+import stuba.fei.gono.java.blocking.validation.annotations.MaxAmount;
 
 import javax.validation.constraints.NotNull;
 

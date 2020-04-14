@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import stuba.fei.gono.java.mongo.converters.OffsetDateTimeDeserializer;
 import stuba.fei.gono.java.mongo.json.*;
 import stuba.fei.gono.java.pojo.*;
-import stuba.fei.gono.java.validation.annotations.*;
+import stuba.fei.gono.java.blocking.validation.annotations.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;

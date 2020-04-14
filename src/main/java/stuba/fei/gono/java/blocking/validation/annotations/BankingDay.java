@@ -1,6 +1,6 @@
-package stuba.fei.gono.java.validation.annotations;
+package stuba.fei.gono.java.blocking.validation.annotations;
 
-import stuba.fei.gono.java.validation.VaultValidator;
+import stuba.fei.gono.java.blocking.validation.BankingDayValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,13 +9,14 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = VaultValidator.class)
-@Target(ElementType.TYPE)
+/***
+ * Annotation for validation o
+ */
+@Target(ElementType.FIELD)
+@Constraint(validatedBy = BankingDayValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidVault {
-
-    String message() default "VAULT_ERROR";
+public @interface BankingDay {
+    String message() default "";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
-
 }
