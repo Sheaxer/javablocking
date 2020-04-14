@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import stuba.fei.gono.java.pojo.Employee;
-import stuba.fei.gono.java.services.EmployeeService;
+import stuba.fei.gono.java.blocking.services.EmployeeService;
 
 import javax.validation.Valid;
 

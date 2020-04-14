@@ -3,11 +3,10 @@ package stuba.fei.gono.java.blocking.rest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stuba.fei.gono.java.errors.ReportedOverlimitTransactionException;
-import stuba.fei.gono.java.pojo.ReportedOverlimitTransaction;
-import stuba.fei.gono.java.services.ReportedOverlimitTransactionService;
+import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
+import stuba.fei.gono.java.blocking.services.ReportedOverlimitTransactionService;
 import stuba.fei.gono.java.pojo.State;
 
 import javax.validation.Valid;

@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import stuba.fei.gono.java.pojo.Employee;
-import stuba.fei.gono.java.services.EmployeeService;
+import stuba.fei.gono.java.blocking.services.EmployeeService;
 
 import java.util.Collections;
 

@@ -1,7 +1,7 @@
 package stuba.fei.gono.java.validation;
 
 import stuba.fei.gono.java.pojo.Money;
-import stuba.fei.gono.java.pojo.ReportedOverlimitTransaction;
+import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
 import stuba.fei.gono.java.pojo.Vault;
 import stuba.fei.gono.java.validation.annotations.ValidVault;
 

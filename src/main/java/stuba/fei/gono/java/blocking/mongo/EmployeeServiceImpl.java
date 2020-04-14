@@ -6,10 +6,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import stuba.fei.gono.java.blocking.mongo.repositories.EmployeeRepository;
 import stuba.fei.gono.java.pojo.Employee;
-import stuba.fei.gono.java.services.EmployeeService;
+import stuba.fei.gono.java.blocking.services.EmployeeService;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {

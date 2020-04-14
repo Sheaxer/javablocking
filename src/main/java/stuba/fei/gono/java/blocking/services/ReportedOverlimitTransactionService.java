@@ -1,7 +1,7 @@
-package stuba.fei.gono.java.services;
+package stuba.fei.gono.java.blocking.services;
 
 
-import stuba.fei.gono.java.pojo.ReportedOverlimitTransaction;
+import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
 
 
 public interface ReportedOverlimitTransactionService {

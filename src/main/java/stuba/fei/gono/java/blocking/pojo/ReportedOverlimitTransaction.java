@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.pojo;
+package stuba.fei.gono.java.blocking.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -11,6 +11,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import stuba.fei.gono.java.mongo.converters.OffsetDateTimeDeserializer;
 import stuba.fei.gono.java.mongo.json.*;
+import stuba.fei.gono.java.pojo.*;
 import stuba.fei.gono.java.validation.annotations.*;
 
 import javax.validation.Valid;

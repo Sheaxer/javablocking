@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.errors;
+package stuba.fei.gono.java.blocking.errors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.ObjectError;
@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import stuba.fei.gono.java.errors.ReportedOverlimitTransactionException;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,14 +24,6 @@ public class ErrorHandler {
     public List<String> springHandleNotFound(Exception ex)  {
         return new ArrayList<>(Collections.singleton(ex.getMessage()));
     }
-
-    @ExceptionHandler(CreateReportedOverlimitTransactionException.class)
-    @ResponseBody
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String postException(Exception ex)  {
-        return ex.getMessage();
-    }
-
     /***
      * Transforms validation errors into JSON array
      * @param ex caught validation exception

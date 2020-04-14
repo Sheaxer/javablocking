@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import stuba.fei.gono.java.errors.ReportedOverlimitTransactionException;
 import stuba.fei.gono.java.blocking.mongo.repositories.ReportedOverlimitTransactionRepository;
-import stuba.fei.gono.java.pojo.ReportedOverlimitTransaction;
+import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
 import stuba.fei.gono.java.pojo.State;
-import stuba.fei.gono.java.services.ReportedOverlimitTransactionService;
+import stuba.fei.gono.java.blocking.services.ReportedOverlimitTransactionService;
 
 import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
