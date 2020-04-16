@@ -1,16 +1,14 @@
-package stuba.fei.gono.java.mongo.json;
+package stuba.fei.gono.java.blocking.json;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import stuba.fei.gono.java.blocking.mongo.repositories.ClientRepository;
 import stuba.fei.gono.java.blocking.services.ClientService;
 import stuba.fei.gono.java.pojo.Client;
 
 import java.io.IOException;
-import java.util.Optional;
 
 /***
  * Class that deserializes Client object from json based on it's id from id - it finds the instance of Client

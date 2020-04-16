@@ -1,16 +1,14 @@
-package stuba.fei.gono.java.mongo.json;
+package stuba.fei.gono.java.blocking.json;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import stuba.fei.gono.java.blocking.mongo.repositories.OrganisationUnitRepository;
 import stuba.fei.gono.java.blocking.services.OrganisationUnitService;
 import stuba.fei.gono.java.pojo.OrganisationUnit;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @Component
 public class OrganisationUnitDeserializer extends StdDeserializer<OrganisationUnit> {

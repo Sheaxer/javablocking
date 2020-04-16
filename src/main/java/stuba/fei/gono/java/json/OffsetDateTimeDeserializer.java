@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.mongo.converters;
+package stuba.fei.gono.java.json;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -23,8 +23,6 @@ public class OffsetDateTimeDeserializer extends StdDeserializer<OffsetDateTime> 
 
     @Override
     public OffsetDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        String tmp = jsonParser.getText();
-
-        return OffsetDateTime.parse(tmp);
+        return OffsetDateTime.parse(jsonParser.getText());
     }
 }

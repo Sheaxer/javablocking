@@ -9,8 +9,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
-import stuba.fei.gono.java.mongo.converters.OffsetDateTimeDeserializer;
-import stuba.fei.gono.java.mongo.json.*;
+import stuba.fei.gono.java.blocking.json.*;
+import stuba.fei.gono.java.json.OffsetDateTimeDeserializer;
+import stuba.fei.gono.java.json.*;
 import stuba.fei.gono.java.pojo.*;
 import stuba.fei.gono.java.blocking.validation.annotations.*;
 
