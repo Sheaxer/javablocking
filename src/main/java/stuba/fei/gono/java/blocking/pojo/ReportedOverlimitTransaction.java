@@ -49,11 +49,12 @@ public class ReportedOverlimitTransaction {
     @NotBlank(message = "IDENTIFICATIONID_INVALID")
     private String identificationId;
 
-    @NotNull
+    @NotNull(message = "FIELD_INVALID")
+    @Valid
     @MaxAmount(message = "FIELD_INVALID")
     private Money amount;
 
-    @NotNull(message = "VAULT_INVALID")
+    //@NotNull(message = "VAULT_INVALID")
     @NotEmpty(message = "VAULT_INVALID")
     private List<Vault> vault;
 
@@ -70,7 +71,7 @@ public class ReportedOverlimitTransaction {
 
     //@Past(message = "INVALID_DATE_IN_PAST")
     //@BankingDay(message = "INVALID_DATE")
-    @NotNull
+    @NotNull(message = "TRANSFERDATE_INVALID")
     @FutureOrPresent(message = "INVALID_DATE_IN_PAST")
     @DaysBeforeDate(message = "FIELD_INVALID_TOO_NEAR_IN_FUTURE")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")

@@ -9,7 +9,7 @@ import stuba.fei.gono.java.pojo.Employee;
 import stuba.fei.gono.java.blocking.services.EmployeeService;
 
 import javax.validation.Valid;
-
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;

@@ -16,7 +16,8 @@ public class VaultValidator implements ConstraintValidator<ValidVault,ReportedOv
 
     @Override
     public boolean isValid(ReportedOverlimitTransaction reportedOverlimitTransaction, ConstraintValidatorContext constraintValidatorContext) {
-
+        if(reportedOverlimitTransaction == null)
+            return true;
        Money m  = reportedOverlimitTransaction.getAmount();
        double value=0.0;
        for(Vault v: reportedOverlimitTransaction.getVault())

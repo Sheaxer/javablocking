@@ -25,7 +25,8 @@ public class MaxAmountValidator implements ConstraintValidator<MaxAmount, Money>
 
     @Override
     public boolean isValid(Money money, ConstraintValidatorContext constraintValidatorContext) {
-
+        if(money == null)
+            return true;
         log.info("Checking");
         log.info(String.valueOf(val));
 

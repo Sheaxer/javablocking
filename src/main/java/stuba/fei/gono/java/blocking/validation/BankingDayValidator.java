@@ -14,7 +14,8 @@ public class BankingDayValidator implements ConstraintValidator<BankingDay, Date
 
     @Override
     public boolean isValid(Date date, ConstraintValidatorContext constraintValidatorContext) {
-
+        if(date == null)
+            return true;
        Calendar c = Calendar.getInstance();
        c.setTime(date);
         int day = c.get(Calendar.DAY_OF_WEEK);

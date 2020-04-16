@@ -15,7 +15,8 @@ public class AccountValidator implements ConstraintValidator<ValidAccount, Accou
 
     @Override
     public boolean isValid(Account account, ConstraintValidatorContext constraintValidatorContext) {
-
+        if(account == null)
+            return true;
         if((account.getIban() == null) || (account.getIban().isEmpty()))
         {
             return (account.getBic() != null) && (!account.getBic().isEmpty())

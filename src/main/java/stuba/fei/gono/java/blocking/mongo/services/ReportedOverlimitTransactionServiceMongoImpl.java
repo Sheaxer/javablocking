@@ -13,7 +13,7 @@ import stuba.fei.gono.java.blocking.services.ReportedOverlimitTransactionService
 import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.Optional;
-
+@Service
 public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOverlimitTransactionService {
 
     @Value("${reportedOverlimitTransaction.transaction.sequenceName:customSequences}")
