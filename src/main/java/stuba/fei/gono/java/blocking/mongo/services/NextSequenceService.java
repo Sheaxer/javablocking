@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.blocking.mongo;
+package stuba.fei.gono.java.blocking.mongo.services;
 
 import com.mongodb.client.*;
 import com.mongodb.client.model.Projections;

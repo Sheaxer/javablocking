@@ -1,6 +1,5 @@
 package stuba.fei.gono.java.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -14,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import stuba.fei.gono.java.blocking.mongo.EmployeeServiceImpl;
 
 import static stuba.fei.gono.java.security.SecurityConstants.SIGN_UP_URL;
 

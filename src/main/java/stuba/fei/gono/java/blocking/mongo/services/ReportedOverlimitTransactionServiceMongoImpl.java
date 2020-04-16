@@ -1,8 +1,9 @@
-package stuba.fei.gono.java.blocking.mongo;
+package stuba.fei.gono.java.blocking.mongo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import stuba.fei.gono.java.blocking.mongo.services.NextSequenceService;
 import stuba.fei.gono.java.errors.ReportedOverlimitTransactionException;
 import stuba.fei.gono.java.blocking.mongo.repositories.ReportedOverlimitTransactionRepository;
 import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
@@ -12,7 +13,7 @@ import stuba.fei.gono.java.blocking.services.ReportedOverlimitTransactionService
 import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.Optional;
-@Service
+
 public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOverlimitTransactionService {
 
     @Value("${reportedOverlimitTransaction.transaction.sequenceName:customSequences}")

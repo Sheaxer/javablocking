@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.blocking.mongo;
+package stuba.fei.gono.java.blocking.mongo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +10,6 @@ import stuba.fei.gono.java.blocking.services.EmployeeService;
 
 import javax.validation.Valid;
 
-@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
@@ -32,6 +31,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee findEmloyeeByUsername(String userName) {
         return employeeRepository.findByUserName(userName).orElse(null);
+    }
+
+    @Override
+    public Employee getEmployeeById(String id) {
+        return employeeRepository.findById(id).orElse(null);
     }
 
     @Override
