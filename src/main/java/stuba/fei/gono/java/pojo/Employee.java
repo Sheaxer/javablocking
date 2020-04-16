@@ -14,7 +14,7 @@ public class Employee  {
     @Id
     private String id;
     @NotBlank
-    private String userName;
+    private String usename;
     @NotBlank
     private String password;
 

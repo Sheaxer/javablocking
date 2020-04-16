@@ -10,6 +10,5 @@ public class Money {
 
     @NotNull
     private Currency currency;
-    @MaxAmount(message = "FIELD_INVALID")
     private double amount;
 }

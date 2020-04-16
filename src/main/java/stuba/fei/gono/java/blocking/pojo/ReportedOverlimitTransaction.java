@@ -50,7 +50,6 @@ public class ReportedOverlimitTransaction {
     private String identificationId;
 
     @NotNull(message = "FIELD_INVALID")
-    @Valid
     @MaxAmount(message = "FIELD_INVALID")
     private Money amount;
 

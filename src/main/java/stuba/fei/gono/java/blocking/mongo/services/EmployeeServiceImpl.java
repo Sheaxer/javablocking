@@ -30,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee findEmloyeeByUsername(String userName) {
-        return employeeRepository.findByUserName(userName).orElse(null);
+        return employeeRepository.findByUsename(userName).orElse(null);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public boolean saveEmployee(@Valid Employee employee) {
-        if(findEmloyeeByUsername(employee.getUserName()) != null)
+        if(findEmloyeeByUsername(employee.getUsename()) != null)
             return false;
         employee.setId(nextSequenceService.getNewId(employeeRepository,sequenceName));
         //e.setUserName(userName);
