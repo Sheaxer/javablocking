@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import stuba.fei.gono.java.blocking.mongo.repositories.OrganisationUnitRepository;
+import stuba.fei.gono.java.blocking.services.OrganisationUnitService;
 import stuba.fei.gono.java.pojo.OrganisationUnit;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.util.Optional;
 public class OrganisationUnitDeserializer extends StdDeserializer<OrganisationUnit> {
 
     @Autowired
-    private OrganisationUnitRepository organisationUnitRepository;
+    private OrganisationUnitService organisationUnitService;
 
     protected OrganisationUnitDeserializer(Class<?> vc) {
         super(vc);
@@ -28,7 +29,6 @@ public class OrganisationUnitDeserializer extends StdDeserializer<OrganisationUn
 
     @Override
     public OrganisationUnit deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        Optional<OrganisationUnit> o = organisationUnitRepository.findById(jsonParser.getText());
-        return o.orElse(null);
+        return organisationUnitService.getOrganisationUnitById(jsonParser.getText());
     }
 }
