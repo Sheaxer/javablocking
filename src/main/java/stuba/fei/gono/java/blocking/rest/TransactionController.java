@@ -44,7 +44,7 @@ public class TransactionController {
     @ResponseStatus(HttpStatus.OK)
     public ReportedOverlimitTransaction getTransaction(@PathVariable String id)
     {
-        return transactionService.getTransactionById(id);
+        return transactionService.getTransactionById(id).orElseThrow(() ->new ReportedOverlimitTransactionException("ID_NOT_FOUND"));
     }
 
     /*@GetMapping(value = "/{id}")
@@ -103,7 +103,8 @@ public class TransactionController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTransaction(@PathVariable String id)
     {
-       transactionService.deleteTransaction(id);
+       if(!transactionService.deleteTransaction(id))
+           throw new ReportedOverlimitTransactionException("ID_NOT_FOUND");
 
     }
     /*@DeleteMapping(value = "/{id}")

@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import stuba.fei.gono.java.blocking.mongo.repositories.OrganisationUnitRepository;
 import stuba.fei.gono.java.blocking.services.OrganisationUnitService;
 import stuba.fei.gono.java.pojo.OrganisationUnit;
+
+import java.util.Optional;
+
 @Service
 public class OrganisationUnitServiceImpl implements OrganisationUnitService {
 
@@ -16,7 +19,7 @@ public class OrganisationUnitServiceImpl implements OrganisationUnitService {
     }
 
     @Override
-    public OrganisationUnit getOrganisationUnitById(String id) {
-        return this.organisationUnitRepository.findById(id).orElse(null);
+    public Optional<OrganisationUnit> getOrganisationUnitById(String id) {
+        return this.organisationUnitRepository.findById(id);
     }
 }

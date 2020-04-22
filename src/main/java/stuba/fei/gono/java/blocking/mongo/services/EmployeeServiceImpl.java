@@ -9,6 +9,8 @@ import stuba.fei.gono.java.pojo.Employee;
 import stuba.fei.gono.java.blocking.services.EmployeeService;
 
 import javax.validation.Valid;
+import java.util.Optional;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -29,18 +31,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findEmloyeeByUsername(String userName) {
-        return employeeRepository.findByUsename(userName).orElse(null);
+    public Optional<Employee> findEmloyeeByUsername(String userName) {
+        return employeeRepository.findByUsename(userName);
     }
 
     @Override
-    public Employee getEmployeeById(String id) {
-        return employeeRepository.findById(id).orElse(null);
+    public Optional<Employee> getEmployeeById(String id) {
+        return employeeRepository.findById(id);
     }
 
     @Override
     public boolean saveEmployee(@Valid Employee employee) {
-        if(findEmloyeeByUsername(employee.getUsename()) != null)
+        if(findEmloyeeByUsername(employee.getUsename()).isPresent())
             return false;
         employee.setId(nextSequenceService.getNewId(employeeRepository,sequenceName));
         //e.setUserName(userName);

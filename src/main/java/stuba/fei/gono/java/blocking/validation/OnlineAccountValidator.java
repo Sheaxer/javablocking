@@ -23,9 +23,9 @@ public class OnlineAccountValidator implements ConstraintValidator<OnlineAccount
             return false;
         Account a= null;
         if(account.getIban() != null)
-            a = accountService.getAccountByIban(account.getIban());
+            a = accountService.getAccountByIban(account.getIban()).orElse(null);
         else if (account.getLocalAccountNumber() != null)
-            a = accountService.getAccountByLocalNumber(account.getLocalAccountNumber());
+            a = accountService.getAccountByLocalNumber(account.getLocalAccountNumber()).orElse(null);
         if(a == null)
             return false;
         return a.isActive();

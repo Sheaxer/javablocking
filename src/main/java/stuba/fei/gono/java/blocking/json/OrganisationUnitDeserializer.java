@@ -27,6 +27,6 @@ public class OrganisationUnitDeserializer extends StdDeserializer<OrganisationUn
 
     @Override
     public OrganisationUnit deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        return organisationUnitService.getOrganisationUnitById(jsonParser.getText());
+        return organisationUnitService.getOrganisationUnitById(jsonParser.getText()).orElse(null);
     }
 }

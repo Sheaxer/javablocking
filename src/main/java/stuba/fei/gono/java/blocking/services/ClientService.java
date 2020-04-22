@@ -3,8 +3,10 @@ package stuba.fei.gono.java.blocking.services;
 import org.springframework.stereotype.Service;
 import stuba.fei.gono.java.pojo.Client;
 
+import java.util.Optional;
+
 public interface ClientService {
 
-    Client getClientById(String id);
+    Optional<Client> getClientById(String id);
 
 }

@@ -25,6 +25,6 @@ public class EmployeeDeserializer extends StdDeserializer<Employee> {
 
     @Override
     public Employee deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        return employeeService.getEmployeeById(jsonParser.getText());
+        return employeeService.getEmployeeById(jsonParser.getText()).orElse(null);
     }
 }

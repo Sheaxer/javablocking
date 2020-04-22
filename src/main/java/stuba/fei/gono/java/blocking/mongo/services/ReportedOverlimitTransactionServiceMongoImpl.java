@@ -42,13 +42,13 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
     }
 
     @Override
-    public ReportedOverlimitTransaction getTransactionById(@NotNull String id) throws ReportedOverlimitTransactionException {
-        Optional<ReportedOverlimitTransaction> transaction= transactionRepository.findById(id);
+    public Optional<ReportedOverlimitTransaction> getTransactionById(@NotNull String id) throws ReportedOverlimitTransactionException {
+        return transactionRepository.findById(id);
         /*if(transaction.isPresent())
             return transaction.get();
         else
             throw new ReportedOverlimitTransactionException("ID_NOT_FOUND");*/
-        return transaction.orElseThrow(() -> new ReportedOverlimitTransactionException("ID_NOT_FOUND"));
+       // return transaction.orElseThrow(() -> new ReportedOverlimitTransactionException("ID_NOT_FOUND"));
     }
 
     @Override
@@ -61,7 +61,7 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
     }
 
     @Override
-    public ReportedOverlimitTransaction deleteTransaction(@NotNull String id) {
+    public boolean deleteTransaction(@NotNull String id) {
         Optional<ReportedOverlimitTransaction> transaction= transactionRepository.findById(id);
         if(transaction.isPresent())
         {
@@ -69,7 +69,7 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
             if(!trans.getState().equals(State.CLOSED))
             {
                 transactionRepository.delete(trans);
-                return  trans;
+                return  true;
             }
             else
                 throw new ReportedOverlimitTransactionException("STATE_CLOSED");
@@ -77,7 +77,7 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
         }
         else
         {
-            throw new ReportedOverlimitTransactionException("ID_NOT_FOUND");
+           return false;
         }
     }
 }
