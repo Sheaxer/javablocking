@@ -54,7 +54,8 @@ public class ReportedOverlimitTransaction {
     private String identificationId;
 
     @NotNull(message = "FIELD_INVALID")
-    @MaxAmount(message = "FIELD_INVALID")
+    @MaxAmount(message = "FIELD_INVALID", maxValue = 999999999.99)
+    @Limit(message = "LIMIT_EXCEEDED")
     private Money amount;
 
     //@NotNull(message = "VAULT_INVALID")
