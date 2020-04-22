@@ -3,10 +3,12 @@ package stuba.fei.gono.java.blocking.mongo.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import stuba.fei.gono.java.blocking.mongo.repositories.AccountRepository;
 import stuba.fei.gono.java.blocking.mongo.services.NextSequenceService;
 import stuba.fei.gono.java.errors.ReportedOverlimitTransactionException;
 import stuba.fei.gono.java.blocking.mongo.repositories.ReportedOverlimitTransactionRepository;
 import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
+import stuba.fei.gono.java.pojo.Account;
 import stuba.fei.gono.java.pojo.State;
 import stuba.fei.gono.java.blocking.services.ReportedOverlimitTransactionService;
 
@@ -26,7 +28,6 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
     public ReportedOverlimitTransactionServiceMongoImpl(ReportedOverlimitTransactionRepository transactionRepository,
                                                         NextSequenceService nextSequenceService)
     {
-        //this.clientRepository = clientRepository;
         this.transactionRepository = transactionRepository;
         this.nextSequenceService = nextSequenceService;
     }

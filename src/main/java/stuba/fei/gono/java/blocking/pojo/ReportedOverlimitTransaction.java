@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import stuba.fei.gono.java.blocking.json.*;
 import stuba.fei.gono.java.json.OffsetDateTimeDeserializer;
 import stuba.fei.gono.java.json.*;
@@ -26,6 +27,7 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @CurrencyAndCategory(message = "CATEGORY_INVALID")
+@Document(collection = "reportedOverlimitTransactions")
 public class ReportedOverlimitTransaction {
 
     @Id

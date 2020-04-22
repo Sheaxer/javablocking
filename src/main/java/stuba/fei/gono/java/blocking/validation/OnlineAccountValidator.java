@@ -28,7 +28,9 @@ public class OnlineAccountValidator implements ConstraintValidator<OnlineAccount
             a = accountService.getAccountByLocalNumber(account.getLocalAccountNumber()).orElse(null);
         if(a == null)
             return false;
-        return a.isActive();
+        if(a.getIsActive() == null)
+            return false;
+        return a.getIsActive();
 
     }
 }
