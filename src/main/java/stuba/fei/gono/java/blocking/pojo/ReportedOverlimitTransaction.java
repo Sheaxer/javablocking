@@ -25,6 +25,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@CurrencyAndCategory(message = "CATEGORY_INVALID")
 public class ReportedOverlimitTransaction {
 
     @Id
@@ -37,6 +38,7 @@ public class ReportedOverlimitTransaction {
 
     @NotNull(message = "SOURCEACCOUNT_INVALID")
     @ValidAccount(message = "SOURCEACCOUNT_INVALID")
+    @OnlineAccount(message = "ACCOUNT_OFFLINE")
     private Account sourceAccount;
 
     @DBRef
