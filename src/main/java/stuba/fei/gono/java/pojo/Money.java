@@ -10,5 +10,6 @@ public class Money {
 
     @NotNull
     private Currency currency;
-    private double amount;
+    @NotNull
+    private Double amount;
 }

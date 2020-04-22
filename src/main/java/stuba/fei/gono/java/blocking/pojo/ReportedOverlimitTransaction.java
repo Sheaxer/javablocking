@@ -64,7 +64,7 @@ public class ReportedOverlimitTransaction {
     public OffsetDateTime getModificationDate()
     {
         if(this.zoneOffset !=null)
-            this.setModificationDate(this.modificationDate.toInstant().atOffset(ZoneOffset.of(this.zoneOffset)));
+            this.modificationDate = this.modificationDate.toInstant().atOffset(ZoneOffset.of(this.zoneOffset));
         return this.modificationDate;
     }
 
