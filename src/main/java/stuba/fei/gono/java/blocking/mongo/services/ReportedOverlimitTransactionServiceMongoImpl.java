@@ -13,12 +13,15 @@ import stuba.fei.gono.java.blocking.services.ReportedOverlimitTransactionService
 import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+
+/***
+ * Implementation of ReportedOverlimitTransactionService for use with MongoDB.
+ */
 @Service
 public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOverlimitTransactionService {
 
     @Value("${reportedOverlimitTransaction.transaction.sequenceName:customSequences}")
     private String sequenceName;
-    //private ClientRepository clientRepository;
     private ReportedOverlimitTransactionRepository transactionRepository;
     private NextSequenceService nextSequenceService;
 
@@ -34,20 +37,14 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
     public ReportedOverlimitTransaction postTransaction(@NotNull ReportedOverlimitTransaction newTransaction) {
 
         String newId = nextSequenceService.getNewId(transactionRepository,sequenceName);
-
         newTransaction.setState(State.CREATED);
-        //transactionRepository.save(newTransaction);
+        newTransaction.setModificationDate(OffsetDateTime.now());
         return putTransaction(newId,newTransaction);
     }
 
     @Override
     public Optional<ReportedOverlimitTransaction> getTransactionById(@NotNull String id) throws ReportedOverlimitTransactionNotFoundException {
         return transactionRepository.findById(id);
-        /*if(transaction.isPresent())
-            return transaction.get();
-        else
-            throw new ReportedOverlimitTransactionException("ID_NOT_FOUND");*/
-       // return transaction.orElseThrow(() -> new ReportedOverlimitTransactionException("ID_NOT_FOUND"));
     }
 
     @Override
@@ -55,7 +52,6 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
                                                        @NotNull ReportedOverlimitTransaction transaction) {
         transaction.setId(id);
         transaction.setModificationDate(OffsetDateTime.now());
-        transaction.setZoneOffset(transaction.getModificationDate().getOffset().getId());
         nextSequenceService.needsUpdate(sequenceName,id);
         transactionRepository.save(transaction);
         return transaction;

@@ -1,7 +1,11 @@
 package stuba.fei.gono.java.blocking.mongo.repositories;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
 import stuba.fei.gono.java.pojo.OrganisationUnit;
-
-public interface OrganisationUnitRepository extends MongoRepository<OrganisationUnit,String> {
+/***
+ * Interface extending CrudRepository for OrganisationUnit.
+ * @see OrganisationUnit
+ * @see CrudRepository
+ */
+public interface OrganisationUnitRepository extends CrudRepository<OrganisationUnit,String> {
 }

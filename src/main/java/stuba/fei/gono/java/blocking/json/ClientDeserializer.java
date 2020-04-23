@@ -11,8 +11,9 @@ import stuba.fei.gono.java.pojo.Client;
 import java.io.IOException;
 
 /***
- * Class that deserializes Client object from json based on it's id from id - it finds the instance of Client
- * in the database.
+ * Class that deserializes Client object from json based on its id. Retrieves the entity with the id using
+ * ClientService.
+ * @see ClientService
  */
 @Component
 public class ClientDeserializer extends StdDeserializer<Client > {
@@ -27,11 +28,11 @@ public class ClientDeserializer extends StdDeserializer<Client > {
     private ClientService clientService;
 
     /***
-     * Deserializes the Client from JSON
-     * @param jsonParser parser
-     * @param deserializationContext parser context
-     * @return deserialized Client from MongoDB
-     * @throws IOException exception
+     * Deserializes the Client from JSON by returning its id.
+     * @param jsonParser parser.
+     * @param deserializationContext parser context.
+     * @return value of id of Client.
+     * @throws IOException exception.
      */
     @Override
     public Client deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {

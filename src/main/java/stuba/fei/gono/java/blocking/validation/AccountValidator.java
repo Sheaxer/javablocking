@@ -1,6 +1,5 @@
 package stuba.fei.gono.java.blocking.validation;
 
-import stuba.fei.gono.java.pojo.Account;
 import stuba.fei.gono.java.blocking.validation.annotations.ValidAccount;
 import stuba.fei.gono.java.pojo.AccountNO;
 

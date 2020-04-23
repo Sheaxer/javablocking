@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import stuba.fei.gono.java.blocking.mongo.repositories.ClientRepository;
 import stuba.fei.gono.java.blocking.mongo.repositories.EmployeeRepository;
@@ -25,7 +26,7 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 /***
- * Class that allows to perform operations on MongoDB
+ * Class that allows to perform operations on MongoDB.
  */
 @Service
 @Slf4j
@@ -84,7 +85,7 @@ public class NextSequenceService {
         }*/
     }
 
-    public String getNewId(@NotNull MongoRepository<?,String> rep, @NotNull String sequenceName)
+    public String getNewId(@NotNull CrudRepository<?,String> rep, @NotNull String sequenceName)
     {
         String newId = this.getNextSequence(sequenceName);
         if( rep.findById(newId).isPresent())

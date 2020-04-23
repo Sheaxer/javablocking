@@ -11,6 +11,9 @@ import stuba.fei.gono.java.blocking.services.EmployeeService;
 import javax.validation.Valid;
 import java.util.Optional;
 
+/***
+ * Implementation of EmployeeService for use with MongoDB.
+ */
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 

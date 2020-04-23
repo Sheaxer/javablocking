@@ -8,6 +8,10 @@ import stuba.fei.gono.java.pojo.OrganisationUnit;
 
 import java.util.Optional;
 
+/***
+ * Implementation of OrganisationUnitService for use with MongoDB.
+ * @see OrganisationUnitService
+ */
 @Service
 public class OrganisationUnitServiceImpl implements OrganisationUnitService {
 

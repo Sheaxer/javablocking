@@ -10,6 +10,10 @@ import stuba.fei.gono.java.pojo.Employee;
 
 import java.io.IOException;
 
+/***
+ * Class that deserializes Employee entity by id. Retrieves the entity with the given id using the EmployeeService.
+ * @see EmployeeService
+ */
 @Component
 public class EmployeeDeserializer extends StdDeserializer<Employee> {
     public EmployeeDeserializer(Class<?> vc) {
