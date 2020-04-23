@@ -3,12 +3,10 @@ package stuba.fei.gono.java.blocking.mongo.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import stuba.fei.gono.java.blocking.mongo.repositories.AccountRepository;
-import stuba.fei.gono.java.blocking.mongo.services.NextSequenceService;
-import stuba.fei.gono.java.errors.ReportedOverlimitTransactionException;
+import stuba.fei.gono.java.errors.ReportedOverlimitTransactionBadRequestException;
+import stuba.fei.gono.java.errors.ReportedOverlimitTransactionNotFoundException;
 import stuba.fei.gono.java.blocking.mongo.repositories.ReportedOverlimitTransactionRepository;
 import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
-import stuba.fei.gono.java.pojo.Account;
 import stuba.fei.gono.java.pojo.State;
 import stuba.fei.gono.java.blocking.services.ReportedOverlimitTransactionService;
 
@@ -43,7 +41,7 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
     }
 
     @Override
-    public Optional<ReportedOverlimitTransaction> getTransactionById(@NotNull String id) throws ReportedOverlimitTransactionException {
+    public Optional<ReportedOverlimitTransaction> getTransactionById(@NotNull String id) throws ReportedOverlimitTransactionNotFoundException {
         return transactionRepository.findById(id);
         /*if(transaction.isPresent())
             return transaction.get();
@@ -53,16 +51,20 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
     }
 
     @Override
-    public ReportedOverlimitTransaction putTransaction(@NotNull String id, @NotNull ReportedOverlimitTransaction transaction) {
+    public ReportedOverlimitTransaction putTransaction(@NotNull String id,
+                                                       @NotNull ReportedOverlimitTransaction transaction) {
         transaction.setId(id);
         transaction.setModificationDate(OffsetDateTime.now());
         transaction.setZoneOffset(transaction.getModificationDate().getOffset().getId());
+        nextSequenceService.needsUpdate(sequenceName,id);
         transactionRepository.save(transaction);
         return transaction;
     }
 
     @Override
-    public boolean deleteTransaction(@NotNull String id) {
+    public boolean deleteTransaction(@NotNull String id)
+    throws ReportedOverlimitTransactionBadRequestException
+    {
         Optional<ReportedOverlimitTransaction> transaction= transactionRepository.findById(id);
         if(transaction.isPresent())
         {
@@ -73,7 +75,7 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
                 return  true;
             }
             else
-                throw new ReportedOverlimitTransactionException("STATE_CLOSED");
+                throw new ReportedOverlimitTransactionBadRequestException("STATE_CLOSED");
 
         }
         else

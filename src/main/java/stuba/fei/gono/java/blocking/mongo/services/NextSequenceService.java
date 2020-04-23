@@ -18,6 +18,8 @@ import stuba.fei.gono.java.pojo.*;
 
 import javax.validation.constraints.NotNull;
 
+import java.util.List;
+
 import static org.springframework.data.mongodb.core.FindAndModifyOptions.options;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
@@ -118,5 +120,21 @@ public class NextSequenceService {
             lastVal++;
            return String.valueOf(lastVal);
         });
+    }
+
+    public void needsUpdate(String seqName, String value)
+    {
+        try {
+
+            long longVal = Long.parseLong(value);
+            List<SequenceId> tmp = mongoOperations.find(query(where("_id").is(seqName)), SequenceId.class);
+            if (tmp.isEmpty())
+                tmp.add(new SequenceId());
+            if(longVal > tmp.get(0).getSeq())
+                setNextSequence(seqName,value);
+        }catch (NumberFormatException ignored)
+        {
+        }
+
     }
 }

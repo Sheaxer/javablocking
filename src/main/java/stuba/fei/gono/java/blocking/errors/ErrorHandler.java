@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import stuba.fei.gono.java.errors.ReportedOverlimitTransactionException;
+import stuba.fei.gono.java.errors.ReportedOverlimitTransactionBadRequestException;
+import stuba.fei.gono.java.errors.ReportedOverlimitTransactionNotFoundException;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,10 +19,18 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class ErrorHandler {
 
-    @ExceptionHandler(ReportedOverlimitTransactionException.class)
+    @ExceptionHandler(ReportedOverlimitTransactionNotFoundException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public List<String> springHandleNotFound(Exception ex)  {
+        return new ArrayList<>(Collections.singleton(ex.getMessage()));
+    }
+
+
+    @ExceptionHandler(ReportedOverlimitTransactionBadRequestException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public List<String> handleBadRequestException( ReportedOverlimitTransactionBadRequestException ex)
+    {
         return new ArrayList<>(Collections.singleton(ex.getMessage()));
     }
     /***

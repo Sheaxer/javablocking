@@ -1,15 +1,16 @@
 package stuba.fei.gono.java.pojo;
 
 import lombok.Data;
-import stuba.fei.gono.java.blocking.validation.annotations.MaxAmount;
 
 import javax.validation.constraints.NotNull;
 
+/***
+ * Class representing withdraw amount in defined currency (only EUR for DOMESTIC) and with precision.
+ */
 @Data
 public class Money {
 
     @NotNull
     private Currency currency;
-    @NotNull
-    private Double amount;
+    private double amount;
 }

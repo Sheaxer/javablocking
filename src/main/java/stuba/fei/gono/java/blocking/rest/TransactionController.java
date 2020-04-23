@@ -2,10 +2,10 @@ package stuba.fei.gono.java.blocking.rest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import stuba.fei.gono.java.errors.ReportedOverlimitTransactionException;
+import stuba.fei.gono.java.errors.ReportedOverlimitTransactionBadRequestException;
+import stuba.fei.gono.java.errors.ReportedOverlimitTransactionNotFoundException;
 import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
 import stuba.fei.gono.java.blocking.services.ReportedOverlimitTransactionService;
 import stuba.fei.gono.java.pojo.State;
@@ -37,14 +37,15 @@ public class TransactionController {
      * @see ReportedOverlimitTransaction
      * @param id Id of the requested ReportedOverlimitTransaction
      * @return requested instance of ReportedOverlimitTransaction
-     * @throws ReportedOverlimitTransactionException exception if there is no instance of ReportedOverlimitTransaction with the requested id
+     * @throws ReportedOverlimitTransactionNotFoundException exception if there is no instance entity with the given id.
      */
     @GetMapping(value = "/{id}",produces = "application/json")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public ReportedOverlimitTransaction getTransaction(@PathVariable String id)
     {
-        return transactionService.getTransactionById(id).orElseThrow(() ->new ReportedOverlimitTransactionException("ID_NOT_FOUND"));
+        return transactionService.getTransactionById(id).orElseThrow(() ->
+                new ReportedOverlimitTransactionNotFoundException("ID_NOT_FOUND"));
     }
 
     /*@GetMapping(value = "/{id}")
@@ -95,16 +96,18 @@ public class TransactionController {
      * @see ReportedOverlimitTransaction
      * @see State
      * @param id id of ReportedOverlimitTransaction that should be deleted
-     * @throws ReportedOverlimitTransactionException if requested ReportedOverlimitTransaction cannot be deleted
-     * either because it's state is not CLOSED or there is isn't one with requested it stored.
+     * @throws ReportedOverlimitTransactionNotFoundException if there is no entity with the given id.
+     * @throws ReportedOverlimitTransactionBadRequestException if the entity with given id cannot be deleted because its
+     * state is CLOSED.
      */
     @DeleteMapping(value = "/{id}", produces = "application/json")
     @ResponseBody
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTransaction(@PathVariable String id)
+    public void deleteTransaction(@PathVariable String id) throws ReportedOverlimitTransactionBadRequestException,
+            ReportedOverlimitTransactionNotFoundException
     {
        if(!transactionService.deleteTransaction(id))
-           throw new ReportedOverlimitTransactionException("ID_NOT_FOUND");
+           throw new ReportedOverlimitTransactionNotFoundException("ID_NOT_FOUND");
 
     }
     /*@DeleteMapping(value = "/{id}")

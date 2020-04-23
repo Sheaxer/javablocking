@@ -10,6 +10,7 @@ import java.time.OffsetDateTime;
 /***
  * Class that allows deserialization from JSON to an instance of OffsetDateTime
  * @see OffsetDateTime
+ * @see StdDeserializer
  */
 public class OffsetDateTimeDeserializer extends StdDeserializer<OffsetDateTime> {
     protected OffsetDateTimeDeserializer(Class<?> vc) {
@@ -23,6 +24,8 @@ public class OffsetDateTimeDeserializer extends StdDeserializer<OffsetDateTime> 
 
     @Override
     public OffsetDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        return OffsetDateTime.parse(jsonParser.getText());
+        String tmp = jsonParser.getText();
+
+        return OffsetDateTime.parse(tmp);
     }
 }
