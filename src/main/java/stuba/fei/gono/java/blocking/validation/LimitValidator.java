@@ -22,9 +22,6 @@ public class LimitValidator implements ConstraintValidator<Limit, Money> {
         if(money == null) {
             return true;
         }
-        if(money.getAmount() == null) {
-            return true;
-        }
         return !(money.getAmount() > this.val);
 
     }

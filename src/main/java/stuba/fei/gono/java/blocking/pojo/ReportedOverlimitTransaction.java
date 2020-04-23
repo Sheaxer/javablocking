@@ -41,11 +41,10 @@ public class ReportedOverlimitTransaction {
     @NotNull(message = "SOURCEACCOUNT_INVALID")
     @ValidAccount(message = "SOURCEACCOUNT_INVALID")
     @OnlineAccount(message = "ACCOUNT_OFFLINE")
-    private Account sourceAccount;
+    private AccountNO sourceAccount;
 
     @DBRef
     @NotNull(message = "CLIENTID_NOT_VALID")
-    @Valid
     @JsonDeserialize(using = ClientDeserializer.class)
     @JsonSerialize(using = ClientSerializer.class)
     private Client clientId;

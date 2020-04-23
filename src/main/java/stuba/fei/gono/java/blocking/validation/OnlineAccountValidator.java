@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import stuba.fei.gono.java.blocking.services.AccountService;
 import stuba.fei.gono.java.blocking.validation.annotations.OnlineAccount;
 import stuba.fei.gono.java.pojo.Account;
+import stuba.fei.gono.java.pojo.AccountNO;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class OnlineAccountValidator implements ConstraintValidator<OnlineAccount, Account> {
+public class OnlineAccountValidator implements ConstraintValidator<OnlineAccount, AccountNO> {
     @Autowired
     private  AccountService accountService;
 
@@ -18,7 +19,7 @@ public class OnlineAccountValidator implements ConstraintValidator<OnlineAccount
     }
 
     @Override
-    public boolean isValid(Account account, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(AccountNO account, ConstraintValidatorContext constraintValidatorContext) {
         if(account == null)
             return false;
         Account a= null;

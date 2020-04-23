@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Optional<Employee> findEmloyeeByUsername(String userName) {
-        return employeeRepository.findByUsename(userName);
+        return employeeRepository.findEmployeeByUsername(userName);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public boolean saveEmployee(@Valid Employee employee) {
-        if(findEmloyeeByUsername(employee.getUsename()).isPresent())
+        if(findEmloyeeByUsername(employee.getUsername()).isPresent())
             return false;
         employee.setId(nextSequenceService.getNewId(employeeRepository,sequenceName));
         //e.setUserName(userName);
