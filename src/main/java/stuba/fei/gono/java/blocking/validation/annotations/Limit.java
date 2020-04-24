@@ -6,6 +6,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/***
+ * Annotation for validation of Money object - withdrawal amount
+ * must be less than limit.
+ */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 
@@ -13,5 +17,5 @@ public @interface Limit {
     String message() default "";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
-    double maxValue() default 0.0;
+    double limit() default 0.0;
 }

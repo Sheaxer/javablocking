@@ -7,14 +7,21 @@ import stuba.fei.gono.java.pojo.Money;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/***
+ * Class implementing validation of Limit annotation. Valid amount on withdrawal must be less than limit.
+ * @see Limit
+ */
 public class LimitValidator implements ConstraintValidator<Limit, Money> {
-
+    /***
+     * Maximal value of the valid amount on withdrawal. Set with either limit property of Limit annotation
+     * or reportedOverlimitTransaction.limit property, default 999999999.99
+     */
     @Value("${reportedOverlimitTransaction.limit:999999999.99}")
     private double val;
 
     @Override
     public void initialize(Limit constraintAnnotation) {
-        this.val = (constraintAnnotation.maxValue() == 0 ? val: constraintAnnotation.maxValue());
+        this.val = (constraintAnnotation.limit() == 0 ? val: constraintAnnotation.limit());
     }
 
     @Override

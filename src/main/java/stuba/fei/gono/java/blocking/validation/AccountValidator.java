@@ -6,6 +6,11 @@ import stuba.fei.gono.java.pojo.AccountNO;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/***
+ * Class implementing validation of ValidAccount annotation.
+ * Valid AccountNO must contain either IBAN with optional BIC or local account number.
+ * @see ValidAccount
+ */
 public class AccountValidator implements ConstraintValidator<ValidAccount, AccountNO> {
 
     @Override

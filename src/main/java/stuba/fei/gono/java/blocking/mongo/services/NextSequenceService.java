@@ -85,6 +85,13 @@ public class NextSequenceService {
         }*/
     }
 
+    /***
+     * Generates the next id to be used when saving entity using given repository and updates the sequence
+     * with the given name.
+     * @param rep repository where the entity will be saved.
+     * @param sequenceName name of the sequence that holds the maximal value of id of entities saved in repository.
+     * @return new id value.
+     */
     public String getNewId(@NotNull CrudRepository<?,String> rep, @NotNull String sequenceName)
     {
         String newId = this.getNextSequence(sequenceName);
@@ -107,13 +114,26 @@ public class NextSequenceService {
         return newId;
     }
 
+    /***
+     * Finds the maximal value of id of saved entities sof given class.
+     * @param rep class of entities.
+     * @return maxila value of id of saved entities of given class.
+     */
     public String lastId(@NotNull Class<?> rep)
     {
         return mongoOperations.execute(rep, mongoCollection -> {
            FindIterable<Document> doc= mongoCollection.find().projection(Projections.include("_id"));
            Long max=0L;
-
-           MongoIterable<Long> s = doc.map(document -> Long.valueOf(document.getString("_id")));
+           MongoIterable<Long> s = doc.map(document ->
+           {
+               try{
+                   return Long.parseLong(document.getString("_id"));
+               }
+               catch(NumberFormatException e)
+               {
+                   return 0L;
+               }
+           });
            Long lastVal=0L;
             for (Long tmp : s) {
                 lastVal = tmp > lastVal ? tmp : lastVal;
@@ -123,6 +143,11 @@ public class NextSequenceService {
         });
     }
 
+    /***
+     * Checks if the sequence with given name needs to update its maximal id value by the given value.
+     * @param seqName - name of the sequence, must not be null.
+     * @param value - value to be checked against maximal id value, must not be null.
+     */
     public void needsUpdate(String seqName, String value)
     {
         try {

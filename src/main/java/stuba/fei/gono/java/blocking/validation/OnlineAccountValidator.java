@@ -9,6 +9,10 @@ import stuba.fei.gono.java.pojo.AccountNO;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/***
+ * Class implementing validation of OnlineAccount annotation. AccountNo must represent a saved account
+ * that is online.
+ */
 public class OnlineAccountValidator implements ConstraintValidator<OnlineAccount, AccountNO> {
     @Autowired
     private  AccountService accountService;

@@ -6,6 +6,12 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.Calendar;
 import java.util.Date;
+
+/***
+ * Class implementing the validation of BankingDay annotation of Date class. Date must not be
+ * on a weekend.
+ * @see BankingDay
+ */
 public class BankingDayValidator implements ConstraintValidator<BankingDay, Date> {
     @Override
     public void initialize(BankingDay constraintAnnotation) {

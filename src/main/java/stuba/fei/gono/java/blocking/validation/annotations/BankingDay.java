@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /***
- * Annotation for validation o
+ * Annotation for validation of Banking day - currently any non weekend day.
  */
 @Target(ElementType.FIELD)
 @Constraint(validatedBy = BankingDayValidator.class)

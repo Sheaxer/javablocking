@@ -8,12 +8,16 @@ import stuba.fei.gono.java.pojo.OrderCategory;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class CurrencyAndCategoryValidator implements ConstraintValidator<CurrencyAndCategory, ReportedOverlimitTransaction> {
+/***
+ * Class implementing validation of CurrencyAndCategory annotation for ReportedOverlimitTransaction.
+ * Transaction cannot have Category DOMESTIC and use non EUR currency or have category FX and currency EUR.
+ * @see CurrencyAndCategory
+ */
+public class CurrencyAndCategoryValidator implements ConstraintValidator<CurrencyAndCategory,
+        ReportedOverlimitTransaction> {
 
     @Override
-    public void initialize(CurrencyAndCategory constraintAnnotation) {
-
-    }
+    public void initialize(CurrencyAndCategory constraintAnnotation) { }
 
     @Override
     public boolean isValid(ReportedOverlimitTransaction reportedOverlimitTransaction, ConstraintValidatorContext constraintValidatorContext) {

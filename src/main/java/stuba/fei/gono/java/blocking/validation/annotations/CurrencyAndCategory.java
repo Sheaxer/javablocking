@@ -9,6 +9,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/***
+ * Annotation for validation of ReportedOverlimitTransaction - transaction cannot have
+ * Category DOMESTIC and use non EUR currency or have category FX and currency EUR.
+ */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = CurrencyAndCategoryValidator.class)
