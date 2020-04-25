@@ -10,10 +10,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
-import stuba.fei.gono.java.blocking.mongo.repositories.ClientRepository;
-import stuba.fei.gono.java.blocking.mongo.repositories.EmployeeRepository;
-import stuba.fei.gono.java.blocking.mongo.repositories.OrganisationUnitRepository;
-import stuba.fei.gono.java.blocking.mongo.repositories.ReportedOverlimitTransactionRepository;
+import stuba.fei.gono.java.blocking.mongo.repositories.*;
 import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
 import stuba.fei.gono.java.pojo.*;
 
@@ -44,7 +41,7 @@ public class NextSequenceService {
      * @param seqName name of the sequence where to find next value of id
      * @return new id to be used to insert new Document into MongoDB
      */
-    public String getNextSequence(@NotNull String seqName)
+    private String getNextSequence(@NotNull String seqName)
     {
         SequenceId counter = mongoOperations.findAndModify(
                 query(where("_id").is(seqName)),
@@ -71,7 +68,7 @@ public class NextSequenceService {
      * @param seqName name of the sequence
      * @param value value that the sequence will be set to
      */
-    public void setNextSequence(@NotNull String seqName,@NotNull String value)
+    private void setNextSequence(@NotNull String seqName,@NotNull String value)
     {
         SequenceId s = mongoOperations.findAndModify(
                 query(where("_id").is(seqName)),
@@ -107,6 +104,8 @@ public class NextSequenceService {
                 newId = lastId(Employee.class);
             else if(rep instanceof OrganisationUnitRepository)
                 newId = lastId(OrganisationUnit.class);
+            else if(rep instanceof AccountRepository)
+                newId = lastId(Account.class);
             //newId = this.getNextSequence(sequenceName);
             this.setNextSequence(sequenceName, newId);
             log.info("wasModified");
@@ -119,11 +118,10 @@ public class NextSequenceService {
      * @param rep class of entities.
      * @return maxila value of id of saved entities of given class.
      */
-    public String lastId(@NotNull Class<?> rep)
+    private String lastId(@NotNull Class<?> rep)
     {
         return mongoOperations.execute(rep, mongoCollection -> {
            FindIterable<Document> doc= mongoCollection.find().projection(Projections.include("_id"));
-           Long max=0L;
            MongoIterable<Long> s = doc.map(document ->
            {
                try{

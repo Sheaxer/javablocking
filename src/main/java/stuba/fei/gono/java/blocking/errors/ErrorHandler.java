@@ -14,7 +14,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /***
- * Class that implements custom error handling.
+ * <div class="en">Class that implements custom error handling.</div>
+ * <div class="sk">Trieda ktorá implementuje vlastné spravovanie chýb.</div>
  */
 @RestControllerAdvice
 public class ErrorHandler {
@@ -71,44 +72,45 @@ public class ErrorHandler {
     @ExceptionHandler(org.springframework.http.converter.HttpMessageNotReadableException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleMessageNotReadableException(org.springframework.http.converter.HttpMessageNotReadableException ex)
+    public String handleMessageNotReadableException(
+            org.springframework.http.converter.HttpMessageNotReadableException ex)
     {
         return ex.getMessage();
     }
 
     /***
      * Handles the HttpRequestMethodNotSupportedException.
-     * @param e caught exception.
+     * @param ex caught exception.
      * @return "METHOD_NOT_ALLOWED" error code.
      */
     @ExceptionHandler(org.springframework.web.HttpRequestMethodNotSupportedException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.FORBIDDEN)
-    public String handleMethonNotSupported(org.springframework.web.HttpRequestMethodNotSupportedException e)
+    public String handleMethonNotSupported(org.springframework.web.HttpRequestMethodNotSupportedException ex)
     {
         return "METHOD_NOT_ALLOWED";
     }
     /***
      * Handles the HttpRequestMethodNotSupportedException.
-     * @param e caught exception.
+     * @param ex caught exception.
      * @return "MEDIATYPE_INVALID" error code.
      */
     @ExceptionHandler(org.springframework.web.HttpMediaTypeNotSupportedException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleTypeNotSupported(org.springframework.web.HttpMediaTypeNotSupportedException e)
+    public String handleTypeNotSupported(org.springframework.web.HttpMediaTypeNotSupportedException ex)
     {
         return "MEDIATYPE_INVALID";
     }
     /***
      * Handles the HttpRequestMethodNotSupportedException.
-     * @param e caught exception.
+     * @param ex caught exception.
      * @return "ILLEGAL_ARGUMENT" error code.
      */
     @ExceptionHandler(java.lang.IllegalArgumentException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleIllegalArgument(java.lang.IllegalArgumentException e)
+    public String handleIllegalArgument(java.lang.IllegalArgumentException ex)
     {
         return "ILLEGAL_ARGUMENT";
     }

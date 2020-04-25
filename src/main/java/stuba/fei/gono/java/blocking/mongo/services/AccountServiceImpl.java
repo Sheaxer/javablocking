@@ -9,7 +9,7 @@ import stuba.fei.gono.java.pojo.Account;
 import java.util.Optional;
 
 /***
- * Implementation of AccountService for use with MongoDB.
+ * Implementation of AccountService for use with MongoDB. Used CRUD repository.
  * @see AccountService
  */
 @Service

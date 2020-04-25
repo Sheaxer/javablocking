@@ -26,7 +26,8 @@ public class OffsetDateTimeSerializer extends StdSerializer<OffsetDateTime> {
     }
 
     @Override
-    public void serialize(OffsetDateTime offsetDateTime, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(OffsetDateTime offsetDateTime, JsonGenerator jsonGenerator,
+                          SerializerProvider serializerProvider) throws IOException {
         //DateTimeFormatter.ISO_DATE_TIME
         String tmp = DateTimeFormatter.ISO_DATE_TIME.format(offsetDateTime);
         log.info("I AM HERE");

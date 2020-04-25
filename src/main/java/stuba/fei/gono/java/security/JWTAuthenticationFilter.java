@@ -1,7 +1,6 @@
 package stuba.fei.gono.java.security;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,10 +9,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import stuba.fei.gono.java.pojo.Employee;
-import com.auth0.jwt.JWT;
 
 import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -23,6 +20,14 @@ import java.util.Date;
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 import static stuba.fei.gono.java.security.SecurityConstants.*;
 
+/***
+ * Class that implements UsernamePasswordAuthenticationFilter for authentication
+ * for access to ReportedOverlimitTransaction REST resource for bank employees.
+ * Allows authentication with username and password for employees. Checks the provided username
+ * and password and if valid issues a JWT that enables access to the resources.
+ * @see com.auth0.jwt.JWT
+ * @see UsernamePasswordAuthenticationFilter
+ */
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;

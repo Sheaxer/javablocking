@@ -44,6 +44,7 @@ public class ReportedOverlimitTransaction {
     /***
      * State of order presented to user on FE, value is mapped based on provided BE technical states.
      */
+    @NotNull(message = "STATE_INVALID")
     private State state;
 
     /***
@@ -99,7 +100,8 @@ public class ReportedOverlimitTransaction {
     private String note;
 
     /***
-     * Modification date indicates the last update of order done by user or BE system (read-only field provided by BE).
+     * Modification date indicates the last update of order done by user or BE system
+     * (read-only field provided by BE).
      * ISO dateTime format: YYYY-MM-DDThh:mm:ssZ
      */
     @JsonDeserialize(using = OffsetDateTimeDeserializer.class)
@@ -141,6 +143,6 @@ public class ReportedOverlimitTransaction {
     private Employee createdBy;
 
     @JsonIgnore
-    private String zoneOffset;
+    private String zoneOffset="+00:00";
 
 }

@@ -23,7 +23,8 @@ public class OffsetDateTimeDeserializer extends StdDeserializer<OffsetDateTime> 
     }
 
     @Override
-    public OffsetDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+    public OffsetDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+            throws IOException {
         String tmp = jsonParser.getText();
 
         return OffsetDateTime.parse(tmp);

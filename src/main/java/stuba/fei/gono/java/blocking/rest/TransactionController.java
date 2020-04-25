@@ -67,7 +67,7 @@ public class TransactionController {
      * @throws ReportedOverlimitTransactionBadRequestException if the entity with given id cannot be deleted because its
      * state is CLOSED.
      */
-    @DeleteMapping(value = "/{id}", produces = "application/json")
+    @DeleteMapping(value = "/{id}")
     @ResponseBody
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTransaction(@PathVariable String id) throws ReportedOverlimitTransactionBadRequestException,

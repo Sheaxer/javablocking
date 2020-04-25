@@ -16,14 +16,29 @@ import java.util.ArrayList;
 
 import static stuba.fei.gono.java.security.SecurityConstants.*;
 
+/***
+ * Class implementing BasicAuthenticationFilter, using JWT. Checks if the Authorization header field of HTTP request
+ * is correctly formed e.g. contains "Bearer JWT", decrypts the JWT and checks if it contains valid employee
+ * credentials.
+ */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
     public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
     }
 
+    /***
+     * Checks if the HTTP request header has Authorization field that starts with "Bearer " prefix and if so
+     * attempts to verify that it contains valid JWT with valid employee credentials with getAuthentication method.
+     * @param request HTTP request
+     * @param response response
+     * @param chain chain
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
 
         String header = request.getHeader(HEADER_STRING);
 
@@ -40,6 +55,13 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         //super.doFilterInternal(request, response, chain);
     }
 
+    /***
+     * Extracts the JWT from Authorization field of HTTP request, decrypts it and verifies if it contains
+     * valid employee credentials.
+     * @param request HTTP request
+     * @return Token granting authorization to access secured endpoints if JWT with valid credentials was provided,
+     * null otherwise.
+     */
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request)
     {
         String token = request.getHeader(HEADER_STRING);

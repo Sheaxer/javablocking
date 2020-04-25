@@ -23,7 +23,9 @@ public class OrganisationUnitSerializer extends StdSerializer<OrganisationUnit> 
     }
 
     @Override
-    public void serialize(OrganisationUnit organisationUnit, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(OrganisationUnit organisationUnit,
+                          JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+            throws IOException {
         jsonGenerator.writeString(organisationUnit.getId());
     }
 }

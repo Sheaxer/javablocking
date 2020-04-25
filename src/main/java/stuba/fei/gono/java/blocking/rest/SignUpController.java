@@ -27,7 +27,7 @@ public class SignUpController {
     @ResponseBody
     public String signUp(@RequestBody @Valid Employee user) {
         //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        return employeeService.saveEmployee(user) ? "successfully_registered" : "USERNAME_ALREADY_EXISTS";
+        return employeeService.saveEmployee(user) ? "SUCCESSFULLY_REGISTERED" : "USERNAME_ALREADY_EXISTS";
 
     }
 }

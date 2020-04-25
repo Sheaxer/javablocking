@@ -23,7 +23,8 @@ public class ClientSerializer extends StdSerializer<Client> {
     }
 
     @Override
-    public void serialize(Client client, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(Client client, JsonGenerator jsonGenerator,
+                          SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeString(client.getId());
     }
 }

@@ -35,8 +35,8 @@ public class ClientDeserializer extends StdDeserializer<Client > {
      * @throws IOException exception.
      */
     @Override
-    public Client deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+    public Client deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+            throws IOException {
         return clientService.getClientById(jsonParser.getText()).orElse(null);
-        //throw new ReportedOverlimitTransactionException("CLIENTID_NOT_VALID");
     }
 }

@@ -24,7 +24,8 @@ public class EmployeeSerializer extends StdSerializer<Employee> {
 
 
     @Override
-    public void serialize(Employee employee, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(Employee employee, JsonGenerator jsonGenerator,
+                          SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeString(employee.getId());
     }
 }
