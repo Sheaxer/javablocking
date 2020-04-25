@@ -70,7 +70,7 @@ public class NextSequenceService {
      */
     private void setNextSequence(@NotNull String seqName,@NotNull String value)
     {
-        SequenceId s = mongoOperations.findAndModify(
+         mongoOperations.findAndModify(
                 query(where("_id").is(seqName)),
                 new Update().set("seq",Long.valueOf(value)),
                 options().returnNew(true).upsert(true),
