@@ -1,13 +1,13 @@
 package stuba.fei.gono.java.blocking.mongo.services;
 
-import com.mongodb.client.*;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoIterable;
 import com.mongodb.client.model.Projections;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import stuba.fei.gono.java.blocking.mongo.repositories.*;
@@ -15,7 +15,6 @@ import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
 import stuba.fei.gono.java.pojo.*;
 
 import javax.validation.constraints.NotNull;
-
 import java.util.List;
 
 import static org.springframework.data.mongodb.core.FindAndModifyOptions.options;
@@ -53,12 +52,6 @@ public class NextSequenceService {
             setNextSequence(seqName,String.valueOf(1));
             return "1";
         }
-        /*if(counter == null)
-        {
-            log.info("doing new");
-            mongoOperations.executeCommand("{db.sequence.insert({_id: \""+seqName+"\",seq: 2})}");
-            return "1";
-        }*/
 
         return String.valueOf( counter.getSeq());
     }
@@ -76,10 +69,6 @@ public class NextSequenceService {
                 options().returnNew(true).upsert(true),
                 SequenceId.class
         );
-        /*if(s==null)
-        {
-            mongoOperations.executeCommand("{db.sequence.insert({_id: \""+seqName+"\",seq: "+value+"})}");
-        }*/
     }
 
     /***
@@ -106,9 +95,7 @@ public class NextSequenceService {
                 newId = lastId(OrganisationUnit.class);
             else if(rep instanceof AccountRepository)
                 newId = lastId(Account.class);
-            //newId = this.getNextSequence(sequenceName);
             this.setNextSequence(sequenceName, newId);
-            log.info("wasModified");
         }
         return newId;
     }

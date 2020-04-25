@@ -18,7 +18,7 @@ import static stuba.fei.gono.java.security.SecurityConstants.*;
 
 /***
  * Class implementing BasicAuthenticationFilter, using JWT. Checks if the Authorization header field of HTTP request
- * is correctly formed e.g. contains "Bearer JWT", decrypts the JWT and checks if it contains valid employee
+ * is correctly formed e.g. contains "Bearer JWT", verifies the JWT signature and checks if it contains valid employee
  * credentials.
  */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
@@ -33,8 +33,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
      * @param request HTTP request
      * @param response response
      * @param chain chain
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException IOException
+     * @throws ServletException ServletException
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
@@ -56,8 +56,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     /***
-     * Extracts the JWT from Authorization field of HTTP request, decrypts it and verifies if it contains
-     * valid employee credentials.
+     * Extracts the JWT from Authorization field of HTTP request, verifies the signature and checks if it contains
+     * valid employee credentials. Uses HMAC and SHA-512.
      * @param request HTTP request
      * @return Token granting authorization to access secured endpoints if JWT with valid credentials was provided,
      * null otherwise.

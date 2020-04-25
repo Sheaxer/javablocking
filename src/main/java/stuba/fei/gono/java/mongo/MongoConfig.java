@@ -22,12 +22,15 @@ public class MongoConfig {
 
 
     /***
-     * Adds custom converters for converting Java Classes that are unable to be serialized / deserialized by MongoDB
-     * to classes that are able to be serialized / deserialized
+     * Adds custom converters for converting Java Classes that are unable to be serialized / de-serialized by MongoDB
+     * to classes that are able to be serialized / de-serialized. Adding conversions from java.time.OffsetDateTime to
+     * java.util.Date
      * @return Instance of class MongoCustomConversions instantiated by list of custom MongoDB converters
      * @see MongoCustomConversions
      * @see org.springframework.data.convert.WritingConverter
      * @see org.springframework.data.convert.ReadingConverter
+     * @see java.util.Date
+     * @see java.time.OffsetDateTime
      */
     @Bean
     public MongoCustomConversions customConversions()

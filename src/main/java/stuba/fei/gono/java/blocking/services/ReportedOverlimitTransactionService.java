@@ -37,8 +37,7 @@ public interface ReportedOverlimitTransactionService {
       * Deletes the entity identified by the given id.
       * @param id id of entity.
       * @return true if the entity was deleted, false it there was no entity to be deleted.
-      * @throws ReportedOverlimitTransactionNotFoundException when the entity couldn't be deleted because its state
-      * was closed.
+      * @throws ReportedOverlimitTransactionNotFoundException when the entity couldn't be deleted.
       */
      boolean deleteTransaction (String id) throws ReportedOverlimitTransactionBadRequestException;
 
