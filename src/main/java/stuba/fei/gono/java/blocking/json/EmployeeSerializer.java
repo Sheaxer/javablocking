@@ -22,7 +22,13 @@ public class EmployeeSerializer extends StdSerializer<Employee> {
         this(null);
     }
 
-
+    /***
+     * Converts entity into JSON by writing its id into JSON object.
+     * @param employee entity to be serialized
+     * @param jsonGenerator generator of JSON object for entity.
+     * @param serializerProvider provider.
+     * @throws IOException IOException.
+     */
     @Override
     public void serialize(Employee employee, JsonGenerator jsonGenerator,
                           SerializerProvider serializerProvider) throws IOException {

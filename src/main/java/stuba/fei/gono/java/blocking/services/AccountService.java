@@ -14,6 +14,7 @@ public interface AccountService {
      * @return Optional containing the entity or Optional.empty() if no entity was found.
      */
     Optional<Account> getAccountByIban(String iban);
+
     /***
      * Finds the entity with identified by the given Local Account Number.
      * @param localNumber Local Account Number of the entity.

@@ -14,8 +14,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /***
- * <div class="en">Class that implements custom error handling.</div>
- * <div class="sk">Trieda ktorá implementuje vlastné spravovanie chýb.</div>
+ * <div class="en">Class implementing custom error handling.</div>
  */
 @RestControllerAdvice
 public class ErrorHandler {

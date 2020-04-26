@@ -46,7 +46,7 @@ public class TransactionController {
     }
 
     /***
-     * PUT method - generates new id and saves the entity with the new id.
+     * POST method - generates new id and saves the entity with the new id.
      * @param newTransaction entity to be saved
      * @return saved entity.
      */

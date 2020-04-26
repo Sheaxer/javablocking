@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class DaysBeforeDateValidator implements ConstraintValidator<DaysBeforeDate, Date> {
 
     private Date today;
+
     /***
      * Minimal number of days - days property of DaysBeforeDate annotation or if not used
      * reportedOverlimitTransaction.daysBefore property, default 3.

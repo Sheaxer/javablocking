@@ -103,7 +103,7 @@ public class NextSequenceService {
     /***
      * Finds the maximal value of id of saved entities sof given class.
      * @param rep class of entities.
-     * @return maxila value of id of saved entities of given class.
+     * @return maximal value of id of saved entities of given class.
      */
     private String lastId(@NotNull Class<?> rep)
     {

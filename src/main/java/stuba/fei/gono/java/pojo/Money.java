@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Money {
 
-    @NotNull
+    @NotNull(message = "CURRENCY_INVALID")
     private Currency currency;
     private double amount;
 }

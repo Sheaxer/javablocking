@@ -16,6 +16,7 @@ import stuba.fei.gono.java.json.*;
 import stuba.fei.gono.java.pojo.*;
 import stuba.fei.gono.java.blocking.validation.annotations.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -84,6 +85,7 @@ public class ReportedOverlimitTransaction {
     @NotNull(message = "FIELD_INVALID")
     @MaxAmount(message = "FIELD_INVALID", maxAmount = 999999999.99)
     @Limit(message = "LIMIT_EXCEEDED")
+    @Valid
     private Money amount;
 
     /***

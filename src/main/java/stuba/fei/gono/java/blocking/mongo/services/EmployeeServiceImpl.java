@@ -43,6 +43,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findById(id);
     }
 
+    /***
+     *  Hashes password of employee using BCrypt and saves the entity into the repository.
+     * @param employee entity to be saved.
+     * @return true if entity was saved, false if entity with the same username is already present in the repository.
+     */
     @Override
     public boolean saveEmployee(@Valid Employee employee) {
         if(findEmloyeeByUsername(employee.getUsername()).isPresent())

@@ -27,13 +27,7 @@ public class ClientDeserializer extends StdDeserializer<Client > {
     @Autowired
     private ClientService clientService;
 
-    /***
-     * Deserializes the Client from JSON by returning its id.
-     * @param jsonParser parser.
-     * @param deserializationContext parser context.
-     * @return value of id of Client.
-     * @throws IOException exception.
-     */
+
     @Override
     public Client deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
             throws IOException {
