@@ -2,6 +2,8 @@ package stuba.fei.gono.java.blocking.mongo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import stuba.fei.gono.java.blocking.mongo.repositories.EmployeeRepository;
@@ -16,6 +18,8 @@ import java.util.Optional;
  */
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
+
+
 
     private EmployeeRepository employeeRepository;
     private NextSequenceService nextSequenceService;
@@ -50,8 +54,10 @@ public class EmployeeServiceImpl implements EmployeeService {
      */
     @Override
     public boolean saveEmployee(@Valid Employee employee) {
-        if(findEmloyeeByUsername(employee.getUsername()).isPresent())
+        if(employeeRepository.existsByUsername(employee.getUsername()))
+        {
             return false;
+        }
         employee.setId(nextSequenceService.getNewId(employeeRepository,sequenceName));
         //e.setUserName(userName);
         employee.setPassword(bCryptPasswordEncoder.encode(employee.getPassword()));

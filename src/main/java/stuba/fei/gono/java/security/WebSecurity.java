@@ -23,13 +23,13 @@ import static stuba.fei.gono.java.security.SecurityConstants.SIGN_UP_URL;
  * to add Authorization field in HTTP header
  * containing valid JWT with valid credentials of an employee.
  */
-//@EnableWebSecurity
+@EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public WebSecurity( UserDetailsService userDetailsService,
+    public WebSecurity(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService,
                        BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -77,5 +77,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
         return source;
     }
+
+
 
 }

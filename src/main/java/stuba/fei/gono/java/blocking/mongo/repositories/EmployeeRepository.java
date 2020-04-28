@@ -17,4 +17,5 @@ public interface EmployeeRepository extends CrudRepository<Employee, String> {
      */
     Optional<Employee> findEmployeeByUsername(String username);
 
+    Boolean existsByUsername(String username);
 }
