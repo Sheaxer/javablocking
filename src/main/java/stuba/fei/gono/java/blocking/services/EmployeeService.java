@@ -14,7 +14,7 @@ public interface EmployeeService {
      * @param userName user name of the entity.
      * @return Optional containing the entity or Optional.empty() if no entity was found.
      */
-    Optional<Employee> findEmloyeeByUsername(String userName);
+    Optional<Employee> findEmployeeByUsername(String userName);
 
     /***
      * Finds the entity with the given id.

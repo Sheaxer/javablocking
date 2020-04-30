@@ -1,4 +1,4 @@
-package stuba.fei.gono.java.security;
+package stuba.fei.gono.java.blocking.security;
 
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,7 +1,6 @@
-package stuba.fei.gono.java.security;
+package stuba.fei.gono.java.blocking.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Employee employee= employeeService.findEmloyeeByUsername(s).orElseThrow(() ->
+        Employee employee= employeeService.findEmployeeByUsername(s).orElseThrow(() ->
                 new UsernameNotFoundException("USERNAME_NOTFOUND"));
         return new User(employee.getUsername(),employee.getPassword(), Collections.emptyList());
     }

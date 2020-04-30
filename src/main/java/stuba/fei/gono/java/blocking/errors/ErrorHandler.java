@@ -28,7 +28,7 @@ public class ErrorHandler {
     @ExceptionHandler(ReportedOverlimitTransactionNotFoundException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public List<String> springHandleNotFound(Exception ex)  {
+    public List<String> handleNotFound(ReportedOverlimitTransactionNotFoundException ex)  {
         return new ArrayList<>(Collections.singleton(ex.getMessage()));
     }
 
@@ -41,7 +41,7 @@ public class ErrorHandler {
      */
     @ExceptionHandler(ReportedOverlimitTransactionBadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public List<String> handleBadRequestException( ReportedOverlimitTransactionBadRequestException ex)
+    public List<String> handleBadRequest(ReportedOverlimitTransactionBadRequestException ex)
     {
         return new ArrayList<>(Collections.singleton(ex.getMessage()));
     }
