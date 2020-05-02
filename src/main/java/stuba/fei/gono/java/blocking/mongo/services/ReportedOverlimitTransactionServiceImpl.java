@@ -18,7 +18,7 @@ import java.util.Optional;
  * Implementation of ReportedOverlimitTransactionService for use with MongoDB.
  */
 @Service
-public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOverlimitTransactionService {
+public class ReportedOverlimitTransactionServiceImpl implements ReportedOverlimitTransactionService {
     /***
      * Name of the sequence containing maximal value of id that was used to save entity in the repository.
      */
@@ -28,8 +28,8 @@ public class ReportedOverlimitTransactionServiceMongoImpl implements ReportedOve
     private NextSequenceService nextSequenceService;
 
     @Autowired
-    public ReportedOverlimitTransactionServiceMongoImpl(ReportedOverlimitTransactionRepository transactionRepository,
-                                                        NextSequenceService nextSequenceService)
+    public ReportedOverlimitTransactionServiceImpl(ReportedOverlimitTransactionRepository transactionRepository,
+                                                   NextSequenceService nextSequenceService)
     {
         this.transactionRepository = transactionRepository;
         this.nextSequenceService = nextSequenceService;
