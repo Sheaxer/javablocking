@@ -85,7 +85,7 @@ public class ErrorHandler {
     public String handleMessageNotReadableException(
             org.springframework.http.converter.HttpMessageNotReadableException ex)
     {
-        return ex.getMessage();
+        return "MESSAGE_UNREADABLE";
     }
 
     /***

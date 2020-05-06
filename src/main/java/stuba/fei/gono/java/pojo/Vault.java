@@ -19,18 +19,18 @@ public class Vault {
      * <div class="en">Type of tender.</div>
      * <div class="sk">Typ tendra.</div>
      */
-    @NotNull
+    @NotNull(message = "VAULTTYPE_INVALID")
     private VaultType type;
     /***
      * <div class="en">Number tenders per type.</div>
      * <div class="sk">Počet tendrov typu</div>
      */
-    @Positive
+    @Positive(message = "VAULTNUMBER_INVALID")
     private int number;
     /***
      * <div class="en">Nominal value (power) of tender.</div>
      * <div class="sk">Nominálna hodnota (sila) tendra.</div>
      */
-    @Positive
+    @Positive(message = "VAULTNOMINALVALUE_INVALID")
     private int nominalValue;
 }

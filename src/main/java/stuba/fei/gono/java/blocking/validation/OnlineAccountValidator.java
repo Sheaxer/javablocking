@@ -31,12 +31,13 @@ public class OnlineAccountValidator implements ConstraintValidator<OnlineAccount
     @Override
     public boolean isValid(AccountNO account, ConstraintValidatorContext constraintValidatorContext) {
         if(account == null)
-            return false;
-        Account a= null;
+            return true;
+        Account a;
         if(account.getIban() != null)
             a = accountService.getAccountByIban(account.getIban()).orElse(null);
         else if (account.getLocalAccountNumber() != null)
             a = accountService.getAccountByLocalNumber(account.getLocalAccountNumber()).orElse(null);
+        else return true;
         if(a == null)
             return false;
         if(a.getIsActive() == null)

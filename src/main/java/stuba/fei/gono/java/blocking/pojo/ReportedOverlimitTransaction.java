@@ -77,6 +77,7 @@ public class ReportedOverlimitTransaction {
      * Structure for vault. Detail information about withdrow amount.
      */
     @NotEmpty(message = "VAULT_INVALID")
+    @Valid
     private List<Vault> vault;
 
     /***
