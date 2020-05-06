@@ -73,16 +73,15 @@ public class EmployeeServiceImpl implements EmployeeService {
      * </div>
      */
     @Override
-    public boolean saveEmployee(@Valid Employee employee) {
+    public Employee saveEmployee(@Valid Employee employee) {
         if(employeeRepository.existsByUsername(employee.getUsername()))
         {
-            return false;
+            return null;
         }
         employee.setId(nextSequenceService.getNewId(employeeRepository,sequenceName));
         //e.setUserName(userName);
         employee.setPassword(bCryptPasswordEncoder.encode(employee.getPassword()));
-        employeeRepository.save(employee);
-        return true;
+        return employeeRepository.save(employee);
     }
 
     @Override

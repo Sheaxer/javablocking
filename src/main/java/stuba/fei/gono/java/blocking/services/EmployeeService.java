@@ -39,7 +39,7 @@ public interface EmployeeService {
      * @return <div class="en">true if saved, false if not - employee already exists.</div>
      * <div class="sk">true ak entita bola uložená, false ak už entita s rovnakým požívateľským existovala.</div>
      */
-    boolean saveEmployee(Employee employee);
+    Employee saveEmployee(Employee employee);
 
     /***
      * <div class="en">Checks if the entity with the given user name exists.</div>

@@ -29,9 +29,10 @@ public class SignUpController {
 
     @PostMapping(value = "/signup", consumes = "application/json")
     @ResponseBody
-    public String signUp(@RequestBody @Valid Employee user) {
-        if( employeeService.saveEmployee(user))
-            return "SUCCESSFULLY_REGISTERED";
+    public Employee signUp(@RequestBody @Valid Employee user) {
+        Employee e = employeeService.saveEmployee(user);
+        if(e!=null)
+            return e;
         else
             throw new ReportedOverlimitTransactionBadRequestException( "USERNAME_ALREADY_EXISTS");
 
