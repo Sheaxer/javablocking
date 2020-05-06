@@ -13,15 +13,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import stuba.fei.gono.java.blocking.services.EmployeeService;
 
 import static stuba.fei.gono.java.security.SecurityConstants.SIGN_UP_URL;
 
 /***
- * Class providing security configuration for the endpoints.
+ * <div class="en"> Class providing security configuration for the endpoints.
  * Sets up authorization using JWTs. Allows
  * unrestricted access to /login endpoint and secures all others with requiring
  * to add Authorization field in HTTP header
- * containing valid JWT with valid credentials of an employee.
+ * containing valid JWT with valid credentials of an employee.</div>
+ * <div class="sk">Trieda zabezpečuje nastavenie bezpečnosti pre endpoint-y.
+ * Povolí prístup na /login a /signup endpoint, a zabezpečí všetky ostatné endpoint-y, vyžadovaním
+ * pridania Authorization poľa v HTTP hlavičke, ktoré obsahuje platný JWT s údajmi o zamestnancovi
+ * - objektu triedy Employee.</div>
  */
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
@@ -52,15 +57,21 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-                .addFilter(new JWTAuthorizationFilter(authenticationManager()))
+                .addFilter(new JWTAuthorizationFilter(authenticationManager(), getApplicationContext().getBean(EmployeeService.class)))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
     /***
-     * Sets up authorization using the UserDetailsService and adds BCryptPasswordEncoder as password encoder for
-     * storing hashed user passwords.
-     * @param auth
-     * @throws Exception
+     * <div class="en">Sets up authorization using the UserDetailsService and adds BCryptPasswordEncoder as
+     * password encoder.</div>
+     * <div class="sk">Nastaví autorizáciu pomocou inštancie UserDetailsService a nastaví inštanciu
+     * BCryptPasswordEncoder ako enkóder hesiel </div>
+     * @param auth <div class="en">builder of AuthenticationManager instance.</div>
+     *             <div class="sk">tvorca inštancie AuthenticationManager.</div>
+     * @throws Exception <div class="en">exception.</div>
+     * <div class="sk">výnimka.</div>
+     * @see BCryptPasswordEncoder
+     * @see UserDetailsService
      */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -68,8 +79,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     }
 
     /***
-     * Allows Cors for any URL source.
-     * @return
+     * <div class="en">Allows Cors for any URL source.</div>
+     * <div class="sk">Umožní CORS pre všetky URL zdroje.</div>
+     * @return <div class="en">UrlBasedCorsConfigurationSource instance.</div>
+     * <div class="sk">inštancia triedy UrlBasedCorsConfigurationSource .</div>
      */
     @Bean
     CorsConfigurationSource corsConfigurationSource() {

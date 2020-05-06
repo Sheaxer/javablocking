@@ -10,8 +10,11 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /***
- * Class implementing validation for DaysBeforeDate annotation. Date must be at least x number of in the future
- * from the moment of validation.
+ * <div class="en">Class implementing validation Date object with DaysBeforeDate annotation.
+ * Date must be at least x number of in the future
+ * from the moment of validation.</div>
+ * <div class="sk">Trieda implementujúca validáciu objektu triedy Date s DaysBeforeDate anotáciou.
+ * Dátum musí byť aspoň x počet dní v budúcnosti, než čas validácie. </div>
  * @see DaysBeforeDate
  */
 @Slf4j
@@ -20,8 +23,10 @@ public class DaysBeforeDateValidator implements ConstraintValidator<DaysBeforeDa
     private Date today;
 
     /***
-     * Minimal number of days - days property of DaysBeforeDate annotation or if not used
-     * reportedOverlimitTransaction.daysBefore property, default 3.
+     * <div class="en">Minimal number of days - days property of DaysBeforeDate annotation or if not used
+     * reportedOverlimitTransaction.daysBefore property, default 3.</div>
+     * <div class="sk">Minimálny počet dní - days premenná DaysBeforeDate anotácie alebo ak nie je zadaná,
+     * tak reportedOverlimitTransaction.daysBefore property, alebo predvolená hodnota 3.</div>
      */
     @Value("${reportedOverlimitTransaction.daysBefore:3}")
     private long days;

@@ -7,8 +7,10 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /***
- * Class implementing validation of ValidAccount annotation.
- * Valid AccountNO must contain either IBAN with optional BIC or local account number.
+ * <div class="en">Class implementing validation of ValidAccount annotation.
+ * Valid AccountNO must contain either IBAN with optional BIC or local account number.</div>
+ * <div class="sk">Trieda implementujúca validáciu objektu triedy AccountNO s ValidAccount anotáciou.
+ * Platný objekt AccoutNO musí obsahovať buď - IBAN a volitelný BIC - alebo lokálne číslo účtu.</div>
  * @see ValidAccount
  */
 public class AccountValidator implements ConstraintValidator<ValidAccount, AccountNO> {

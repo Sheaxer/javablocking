@@ -9,7 +9,8 @@ import stuba.fei.gono.java.pojo.Client;
 import java.io.IOException;
 
 /***
- * Class to serialize Client by writing its id into JsonGenerator.
+ * <div class="en">Class to serialize Client by writing its id into JsonGenerator.</div>
+ * <div class="sk">Trieda na serializáciu objektov triedy Client - do JsonGenerator-a sa zapíše id objektu.</div>
  */
 @Component
 public class ClientSerializer extends StdSerializer<Client> {

@@ -11,6 +11,11 @@ import stuba.fei.gono.java.pojo.Employee;
 
 import javax.validation.Valid;
 
+/***
+ * <div class="en">Rest Controller allowing POST method to endpoint /signup to register a new employee.</div>
+ * <div class="sk">Rest kontrolér poskytujúci POST metódou na /signup endpoint-e, ktorá umožnuje
+ * pridanie nového zamestnanca.</div>
+ */
 @RestController
 public class SignUpController {
 
@@ -20,6 +25,7 @@ public class SignUpController {
     public SignUpController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
 
     @PostMapping(value = "/signup", consumes = "application/json")
     @ResponseBody

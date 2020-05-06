@@ -11,8 +11,11 @@ import stuba.fei.gono.java.pojo.OrganisationUnit;
 import java.io.IOException;
 
 /***
- * Class that deserializes OrganisationUnit object from json based on its id. Retrieves the entity with the id using
- * OrganisationUnitService.
+ * <div class="en">Class that deserializes OrganisationUnit object from json
+ * based on its id. Retrieves the entity with the id using
+ * OrganisationUnitService.</div>
+ * <div class="sk">Trieda, ktorá de-serializuje objekty triedy OrganisationUnit z json na základe ich id.
+ * Využíva OrganisationUnitService na nájdenie objektu s id získaným z JsonParser-u.</div>
  * @see OrganisationUnitService
  */
 @Component

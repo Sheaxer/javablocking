@@ -8,13 +8,20 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /***
- * Class implementing validation of Limit annotation. Valid amount on withdrawal must be less than limit.
+ * <div class="en">Class implementing validation of Money object with Limit annotation.
+ * Valid amount on withdrawal must be less than limit.</div>
+ * <div class="sk">Trieda implementujúca valídáciu objektov triedy Money s anotáciou Limit.
+ * Platný objekt musí mať hodnotu premennej amount menšiu ako limit.</div>
  * @see Limit
  */
 public class LimitValidator implements ConstraintValidator<Limit, Money> {
     /***
-     * Maximal value of the valid amount on withdrawal. Set with either limit property of Limit annotation
-     * or reportedOverlimitTransaction.limit property, default 999999999.99
+     * <div class="en">Maximal value of the valid amount in Money object.
+     * Set with either limit property of Limit annotation
+     * or reportedOverlimitTransaction.limit property, default 999999999.99</div>
+     * <div class="sk">Maximálna hodntota amount premennej platného objektu.
+     * Nastavená buď premennou limit v Limit anotácii, alebo property reportedOverlimitTransaction.limit,
+     * alebo predvolenou hodnota 999999999.99</div>
      */
     @Value("${reportedOverlimitTransaction.limit:999999999.99}")
     private double val;

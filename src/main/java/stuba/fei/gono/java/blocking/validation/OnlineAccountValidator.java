@@ -10,8 +10,14 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /***
- * Class implementing validation of OnlineAccount annotation. AccountNo must represent a saved account
- * that is online.
+ * <div class="en">Class implementing validation of AccountNO object with OnlineAccount annotation.
+ * AccountNo must represent a saved account
+ * that is online e.g. AccountNO must have IBAN or local account number representing Account that is retrieved
+ * via AccountService instance and the property isActive of this Account is true.</div>
+ * <div class="sk">Trieda implementujúca validáciu objektov triedy AccountNO s OnlineAccount anotáciou.
+ * Platný objekt musí reprezentovať uložený, aktívny účet, t.j. objekt musí obsahovať buď IBAN alebo
+ * lokálne číslo účtu pomocou ktorého inštancia služby AccountService vie získať inštanciu triedy Account,
+ * ktorá má premennú isActive nastavenú na true.</div>
  */
 public class OnlineAccountValidator implements ConstraintValidator<OnlineAccount, AccountNO> {
     @Autowired

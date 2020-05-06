@@ -22,7 +22,8 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 /***
- * Class that allows to perform operations on MongoDB.
+ * <div class="en">Service that generates next id value for storing data in MongoDB.</div>
+ * <div class="sk">Služba, ktorá generuje nasledujúcu hodnotu id použitú na uloženie entity do Mongo databázy.</div>
  */
 @Service
 @Slf4j
@@ -35,10 +36,14 @@ public class NextSequenceService {
     }
 
     /***
-     * Finds the sequence, gets id that will be used to insert new Document into MongoDB and updates the sequence
-     * to generate new id.
-     * @param seqName name of the sequence where to find next value of id
-     * @return new id to be used to insert new Document into MongoDB
+     * <div class="en">Increments the value of sequence with the given
+     * sequence name.</div>
+     * <div class="sk">Inkrementuje hodnotu sekvencie so zadaným menom.</div>
+     * @see SequenceId
+     * @param seqName <div class="en">name of the sequence.</div>
+     *                <div class="sk">názov sekvencie.</div>
+     * @return <div class="en">updated value of the sequence.</div>
+     * <div class="sk">aktualizovná hodnota sekvencie.</div>
      */
     private String getNextSequence(@NotNull String seqName)
     {
@@ -57,9 +62,13 @@ public class NextSequenceService {
     }
 
     /***
-     * Sets value of sequence in MongoDB.
-     * @param seqName name of the sequence
-     * @param value value that the sequence will be set to
+     * <div class="en">Sets value of sequence with the given name.</div>
+     * <div class="sk">Nastaví hodnotu sekvencie so zadaným názvom.</div>
+     * @see SequenceId
+     * @param seqName <div class="en">name of the sequence.</div>
+     *                <div class="sk">názov sekvencie.</div>
+     * @param value <div class="en">value that the sequence will be set to.</div>
+     *              <div class="sk">hodnota na ktorú sa sekvencia nastaví.</div>
      */
     private void setNextSequence(@NotNull String seqName,@NotNull String value)
     {
@@ -72,11 +81,23 @@ public class NextSequenceService {
     }
 
     /***
-     * Generates the next id to be used when saving entity using given repository and updates the sequence
-     * with the given name.
-     * @param rep repository where the entity will be saved.
-     * @param sequenceName name of the sequence that holds the maximal value of id of entities saved in repository.
-     * @return new id value.
+     * <div class="en">Generates a new value of an id for saving new object in a database.
+     * Updates maximal value
+     * of sequence with the given name, checks if an entity with this id already exists in the repository.
+     * If it does exist, function finds the actual maximal value of id used to store entities in the repository and
+     * updates the sequence.</div>
+     * <div class="sk">Generuje novú hodnotu id na uloženie nového objektu do databázy. Aktualizuje
+     * maximálnu hodnotu sekvencie so zadaným menom, skontroluje či už existuje entita so zadaným id. Ak existuje,
+     * využije ďalšiu metódu na získanie skutočnej maximálnej hodnoty id v zadanom repozitáry a aktualizuje hodnotu
+     * sekvencie.</div>
+     * @param rep <div class="en">repository where the object will be saved.</div>
+     *            <div class="sk">repozitár v ktorom bude objekt uložený.</div>
+     * @param sequenceName <div class="en">name of the sequence holding the id of last saved object.</div>
+     *                     <div class="sk">názov sekvencie ktorá udržiava id posledného uloženého objektu.</div>
+     * @return <div class="en">value of id that should be used to save object in
+     * the given repository.</div>
+     * <div class="sk">hodntota id ktoré by malo byť použité na uloženie
+     * objektu v zadanom repozitári.</div>
      */
     public String getNewId(@NotNull CrudRepository<?,String> rep, @NotNull String sequenceName)
     {
@@ -101,9 +122,14 @@ public class NextSequenceService {
     }
 
     /***
-     * Finds the maximal value of id of saved entities sof given class.
-     * @param rep class of entities.
-     * @return maximal value of id of saved entities of given class.
+     * <div class="en">Calculates the maximal id that was used to save an object of the given class.
+     * Transforms ids of all entities of the given class into long and finds the maximal value.</div>
+     * <div class="sk">Získa maximálnu hodnotu id ktoré bolo použité na uloženie objektu zadanej triedy.
+     * Transformuje id všetkých entít triedy do typu long a získa maximálnu hodnotu.</div>
+     * @param rep <div class="en">class of the entities, must not be null.</div>
+     *            <div class="sk">trieda entít, nesmie byť null.</div>
+     * @return <div class="en">string value of the maximal id of saved entity of the given class.</div>
+     * <div class="sk">hodnota maximálneho id použitého na uloženie entity zadanej triedy.</div>
      */
     private String lastId(@NotNull Class<?> rep)
     {
@@ -129,9 +155,16 @@ public class NextSequenceService {
     }
 
     /***
-     * Checks if the sequence with given name needs to update its maximal id value by the given value.
-     * @param seqName - name of the sequence, must not be null.
-     * @param value - value to be checked against maximal id value, must not be null.
+     * <div class="en">Checks if the sequence with given name needs to update
+     * its maximal value. If the given value is larger than the maximal value stored in
+     * the sequence with the given name, it sets it to the new value.</div>
+     * <div class="sk">Skontroluje, či sekvencia so zadaným názvom potrebuje aktualizovať
+     * maximálnu hodnotu id. Ak je zadaná hodnota väčšia ako uložená maximálna hodnota, nastaví
+     * sa táto uložená hodnota na novú.</div>
+     * @param seqName <div class="en">name of the sequence, must not be null.</div>
+     *                <div class="sk">názov sekvencie, nesmie byť null.</div>
+     * @param value <div class="en">value to be checked against maximal id value, must not be null.</div>
+     *            <div class="sk">hodnota oproti ktorej sa uložená maximálna hodnota porovná.</div>
      */
     public void needsUpdate(String seqName, String value)
     {

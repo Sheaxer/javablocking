@@ -14,16 +14,20 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /***
- * <div class="en">Class implementing custom error handling.</div>
+ * <div class="en">Class that implements custom error handling.</div>
+ * <div class="sk">Trieda ktorá implementuje vlastné spravocanie výnimiek.</div>
  */
 @RestControllerAdvice
 public class ErrorHandler {
     /***
-     * Handles not found exception by returning the list containing the error code and sending the HTTP
-     * NOT_FOUND 404 code.
-     * @param ex caught exception.
-     * @return List containing the error code.
-     * @see ReportedOverlimitTransactionNotFoundException
+     * <div class="en">Handles ReportedOverlimitTransactionNotFoundException
+     * by returning the error code and sending HTTP code NOT_FOUND - 404.</div>
+     * <div class="sk">Spracúváva ReportedOverlimitTransactionNotFoundException výnimku
+     * vrátením HTTP kódu 404 Not Found a chybovej hlášky v tele správy.</div>
+     * @param ex <div class="en">caught exception.</div>
+     *           <div class="sk">odchytená výnimka.</div>
+     * @return <div class="en">The List containing the error message of ex.</div>
+     * <div class="sk">Zoznam obsahujúcí chybovú hlášku v ex.</div>
      */
     @ExceptionHandler(ReportedOverlimitTransactionNotFoundException.class)
     @ResponseBody
@@ -33,11 +37,14 @@ public class ErrorHandler {
     }
 
     /***
-     * Handles the bad request exception by returning the list containing the error code and sends the HTTP
-     * BAD_REQUEST 400 code.
-     * @param ex caught exception
-     * @return List containing the error code.
-     * @see ReportedOverlimitTransactionBadRequestException
+     * <div class="en">Handles ReportedOverlimitTransactionBadRequestException by returning
+     * the error code and sending HTTP code BAD_REQUEST - 400.</div>
+     * <div class="sk">Spracúvava ReportedOverlimitTransactionBadRequestException výnimku vrátením
+     * HTTP kódu BAD_REQUEST - 400 a chybovej hlášky v tele správy.</div>
+     * @param ex <div class="en">caught exception.</div>
+     *           <div class="sk">odchytená výnimka.</div>
+     * @return <div class="en">The list containing the error message of ex.</div>
+     * <div class="sk">Zoznam, ktorý obsahuje chybovú hlášku v ex.</div>
      */
     @ExceptionHandler(ReportedOverlimitTransactionBadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -46,10 +53,14 @@ public class ErrorHandler {
         return new ArrayList<>(Collections.singleton(ex.getMessage()));
     }
     /***
-     * Handles validation errors by transforming into JSON array and returns the error codes with HTTP code
-     * BAD_REQUEST 400.
-     * @param ex caught validation exception.
-     * @return List of validation error messages.
+     * <div class="en">Handles validation errors that occur during put and post REST methods. Returns
+     * HTTTP code BAD_REQUEST - 400 and list of validation errors.</div>
+     * <div class="sk">Spracuváva validačné výnimky ktoré môžu nastať počas PUT a POST REST metód. Vracia
+     * HTTP kód BAD_REQUEST - 400 a zoznam validačných chýb v tele odpovede.</div>
+     * @param ex <div class="en">caught validation exception.</div>
+     *           <div class="sk">zachytená validačná výnimka.</div>
+     * @return <div class="en">List of validation error messages.</div>
+     * <div class="sk">Zoznam validačných chyhových hlášok.</div>
      * @see MethodArgumentNotValidException
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -78,7 +89,8 @@ public class ErrorHandler {
     }
 
     /***
-     * Handles the HttpRequestMethodNotSupportedException.
+     * <div class="en">Handles the HttpRequestMethodNotSupportedException.</div>
+     * <div class="sk">Spracuje HttpRequestMethodNotSupportedException výnimku.</div>
      * @param ex caught exception.
      * @return "METHOD_NOT_ALLOWED" error code.
      */
@@ -90,7 +102,8 @@ public class ErrorHandler {
         return "METHOD_NOT_ALLOWED";
     }
     /***
-     * Handles the HttpRequestMethodNotSupportedException.
+     * <div class="en">Handles the HttpRequestMethodNotSupportedException.</div>
+     * <div class="sk">Spracuje HttpRequestMethodNotSupportedException výnimku.</div>
      * @param ex caught exception.
      * @return "MEDIATYPE_INVALID" error code.
      */
@@ -102,7 +115,8 @@ public class ErrorHandler {
         return "MEDIATYPE_INVALID";
     }
     /***
-     * Handles the HttpRequestMethodNotSupportedException.
+     * <div class="en">Handles the HttpRequestMethodNotSupportedException.</div>
+     * <div class="sk">Spracuje HttpRequestMethodNotSupportedException výnimku.</div>
      * @param ex caught exception.
      * @return "ILLEGAL_ARGUMENT" error code.
      */

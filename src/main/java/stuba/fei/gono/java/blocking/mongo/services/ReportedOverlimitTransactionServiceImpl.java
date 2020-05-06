@@ -3,28 +3,37 @@ package stuba.fei.gono.java.blocking.mongo.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import stuba.fei.gono.java.errors.ReportedOverlimitTransactionBadRequestException;
-import stuba.fei.gono.java.errors.ReportedOverlimitTransactionNotFoundException;
 import stuba.fei.gono.java.blocking.mongo.repositories.ReportedOverlimitTransactionRepository;
 import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
-import stuba.fei.gono.java.pojo.State;
 import stuba.fei.gono.java.blocking.services.ReportedOverlimitTransactionService;
+import stuba.fei.gono.java.errors.ReportedOverlimitTransactionBadRequestException;
+import stuba.fei.gono.java.pojo.State;
 
 import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.Optional;
 
 /***
- * Implementation of ReportedOverlimitTransactionService for use with MongoDB.
+ * <div class="en">Implementation of ReportedOverlimitTransactionService using CRUD operations
+ * and auto generated instance of ReportedOverlimitTransactionRepository. Uses NextSequenceService for
+ * generation of ids used in saving new entities.</div>
+ * <div class="sk">Implementácia rozhrania ReportedOverlimitTransactionService pomocou
+ * CRUD operácií a automaticky generovanej inštancie ReportedOverlimitTransactionRepository.
+ * Využíva inštanciu NextSequenceService na generáciu id pre ukladanie entít.</div>
  */
 @Service
 public class ReportedOverlimitTransactionServiceImpl implements ReportedOverlimitTransactionService {
     /***
-     * Name of the sequence containing maximal value of id that was used to save entity in the repository.
+     * <div class="en">Name of the sequence containing maximal value of id
+     * that was used to save entity in the repository.</div>
+     * <div class="sk">Názov sekvencie obsahujúcej maximálnu hodnotu id použitého na
+     * uloženie entity do repozitára.</div>
      */
     @Value("${reportedOverlimitTransaction.transaction.sequenceName:customSequences}")
     private String sequenceName;
+
     private ReportedOverlimitTransactionRepository transactionRepository;
+
     private NextSequenceService nextSequenceService;
 
     @Autowired
@@ -36,12 +45,16 @@ public class ReportedOverlimitTransactionServiceImpl implements ReportedOverlimi
     }
 
     /***
-     * Generates new id using NextSequenceService and saved entity with this id in the repository. Sets the
-     * modification date of entity to the time of saving and sets the state to CREATED.
+     * <div class="en">Generates new id using NextSequenceService and saved entity with this id in the repository.
+     * Sets the modification date of entity to the time of saving and sets the state to State.CREATED.</div>
+     * <div class="sk">Generuje nové id pomocou inštancie NextSequenceService a uloží entitu do repozitára
+     * s týmto id. Nastaví dátum modifikácie entity na čas uloženia a nastaví stav na State.CREATED.</div>
      * @see NextSequenceService
      * @see State
-     * @param newTransaction entity to be saved.
-     * @return saved entity.
+     * @param newTransaction <div class="en">entity to be saved.</div>
+     *                       <div class="sk">entita, ktorá sa má uložiť.</div>
+     * @return <div class="en">saved entity.</div>
+     * <div class="sk">uložená entita.</div>
      */
     @Override
     public ReportedOverlimitTransaction postTransaction(@NotNull ReportedOverlimitTransaction newTransaction) {
@@ -52,20 +65,19 @@ public class ReportedOverlimitTransactionServiceImpl implements ReportedOverlimi
         return putTransaction(newId,newTransaction);
     }
 
-    /***
-     * Finds entity with the given id in the repository.
-     * @param id id of entity.
-     * @return Optional containing the entity or Optional.empty() if none found.
-     */
+
     @Override
     public Optional<ReportedOverlimitTransaction> getTransactionById(@NotNull String id)  {
         return transactionRepository.findById(id);
     }
 
     /***
-     * Saves the entity using the given id in the repository. Sets modification date to time of saving, and if
-     * there was no entity with the given id before sets the state to CREATED. Notifies the NextSequenceService to
-     * check if the id given is a new maximal value.
+     * <div class="en">Saves the entity using the given id in the repository. Sets modification date to time of saving,
+     * and if there was no entity with the given id before sets the state to CREATED.
+     * Notifies the NextSequenceService to check if the id given is a new maximal value.</div>
+     * <div class="sk">Uloží entitu so zadaným id do repozitára. Nastaví dátum modifikácie na čas
+     * ukladania a ak neexistovala entita so zadaným id nastaví jej stav na State.CREATED</div>
+     * @see State
      * @param id id which will identify the saved entity.
      * @param transaction entity to be saved.
      * @return saved entity.
@@ -83,11 +95,19 @@ public class ReportedOverlimitTransactionServiceImpl implements ReportedOverlimi
     }
 
     /***
-     * Deletes the entity with the given id if it exists in the repository and its state is not CLOSED.
-     * @param id id of entity.
-     * @return true if entity with given id was found, its state was not CLOSED and it was deleted.
-     * @throws ReportedOverlimitTransactionBadRequestException in case the entity couldn't be deleted because its
-     * state was CLOSED.
+     * <div class="en">Deletes the entity with the given id if it exists in the repository and its state is not
+     * State.CLOSED.</div>
+     * <div class="sk">Zmaže entitu so zadaným id ak táto entita existovala a jej stav nie je State.CLOSED.</div>
+     * @see State
+     * @param id <div class="en">id of entity.</div>
+     *           <div class="sk">id entity.</div>
+     * @return <div class="en">true if entity with given id was found, its state was not CLOSED and it was deleted.
+     * </div>
+     * <div class="sk">true ak entita existovala, jej stav nebol State.CLOSED a bola zmazaná, false ak entita
+     * neexistovala.</div>
+     * @throws ReportedOverlimitTransactionBadRequestException <div class="id">in case the entity couldn't
+     * be deleted because its state was State.CLOSED.</div>
+     * <div class="sk">ak entita nemohla byť zmazaná, pretože jej stav bol State.CLOSED</div>
      */
     @Override
     public boolean deleteTransaction(@NotNull String id)

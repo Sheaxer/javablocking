@@ -11,7 +11,10 @@ import stuba.fei.gono.java.pojo.Employee;
 import java.io.IOException;
 
 /***
- * Class that deserializes Employee entity by id. Retrieves the entity with the given id using the EmployeeService.
+ * <div class="en">Class that deserializes Employee entity by id. Retrieves the entity with the id given from
+ * JsonParser using the EmployeeService.</div>
+ * <div class="sk">Trieda, ktorá slúži na de-serializáciu objektov triedy Employee na základe id.
+ * Využije EmployeeService na získanie objektu na základe id z JsonParser.</div>
  * @see EmployeeService
  */
 @Component

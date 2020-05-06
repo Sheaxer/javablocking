@@ -4,7 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 import stuba.fei.gono.java.pojo.Client;
 
 /***
- * Interface extending CrudRepository for Client.
+ * <div class="en">Interface extending CrudRepository for Client.</div>
+ * <div class="sk">Rozrhranie rozširujúce CrudRepository pre objekty triedy Client.</div>
  * @see Client
  * @see CrudRepository
  */

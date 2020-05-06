@@ -9,7 +9,9 @@ import stuba.fei.gono.java.pojo.OrganisationUnit;
 import java.io.IOException;
 
 /***
- *  Class that serializes OrganisationUnit by writing its id into the JsonGenerator.
+ *  <div class="en">Class that serializes OrganisationUnit by writing its id into the JsonGenerator.</div>
+ *  <div class="sk">Trieda, ktorá serializuje objekty triedy OrganisationUnit do Json reťazca zapísaním
+ *  id objektu do JsonGenerator-a.</div>
  */
 @Component
 public class OrganisationUnitSerializer extends StdSerializer<OrganisationUnit> {

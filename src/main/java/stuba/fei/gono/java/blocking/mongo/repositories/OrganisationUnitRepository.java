@@ -3,7 +3,8 @@ package stuba.fei.gono.java.blocking.mongo.repositories;
 import org.springframework.data.repository.CrudRepository;
 import stuba.fei.gono.java.pojo.OrganisationUnit;
 /***
- * Interface extending CrudRepository for OrganisationUnit.
+ * <div class="en">Interface extending CrudRepository for OrganisationUnit.</div>
+ * <div class="sk">Rozhranie rozširujúce CrudRepository pre entity tried OrganisationUnit.</div>
  * @see OrganisationUnit
  * @see CrudRepository
  */

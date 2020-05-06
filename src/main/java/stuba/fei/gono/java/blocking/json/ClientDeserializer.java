@@ -11,9 +11,12 @@ import stuba.fei.gono.java.pojo.Client;
 import java.io.IOException;
 
 /***
- * Class that deserializes Client object from json based on its id. Retrieves the entity with the id using
- * ClientService.
+ * <div class="en">Class that deserializes Client object from json based on its id. Retrieves the entity with the
+ * id retireved from JsonParser using ClientService .</div>
+ * <div class="sk">Trieda na de-serializáciu objektov triedy Client na základe id. Využije
+ * CLientService na nájdenie entity s id získaným z JsonParser.</div>
  * @see ClientService
+ * @see JsonParser
  */
 @Component
 public class ClientDeserializer extends StdDeserializer<Client > {

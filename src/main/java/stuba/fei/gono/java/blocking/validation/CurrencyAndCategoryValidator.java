@@ -9,8 +9,12 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /***
- * Class implementing validation of CurrencyAndCategory annotation for ReportedOverlimitTransaction.
- * Transaction cannot have Category DOMESTIC and use non EUR currency or have category FX and currency EUR.
+ * <div class="en">Class implementing validation of CurrencyAndCategory annotation for
+ * ReportedOverlimitTransaction.
+ * Transaction cannot have Category DOMESTIC and use non EUR currency or have category FX and currency EUR.</div>
+ * <div class="sk">Trieda implementujúca validáciu objektu triedy ReportedOverlimitTransaction s anotáciou
+ * CurrencyAndCategory. Transakcia nesmie mať kategóriu (orderCategory premennú) OrderCategory.DOMESTIC a menu
+ * (amount.currency) inú ako Currency.EUR alebo kategóriu FX a nie menu EUR.</div>
  * @see CurrencyAndCategory
  */
 public class CurrencyAndCategoryValidator implements ConstraintValidator<CurrencyAndCategory,

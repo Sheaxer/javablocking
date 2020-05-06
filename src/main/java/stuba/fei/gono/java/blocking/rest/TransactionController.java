@@ -4,14 +4,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import stuba.fei.gono.java.errors.ReportedOverlimitTransactionBadRequestException;
-import stuba.fei.gono.java.errors.ReportedOverlimitTransactionNotFoundException;
 import stuba.fei.gono.java.blocking.pojo.ReportedOverlimitTransaction;
 import stuba.fei.gono.java.blocking.services.ReportedOverlimitTransactionService;
+import stuba.fei.gono.java.errors.ReportedOverlimitTransactionBadRequestException;
+import stuba.fei.gono.java.errors.ReportedOverlimitTransactionNotFoundException;
 import stuba.fei.gono.java.pojo.State;
 
 import javax.validation.Valid;
-import java.time.OffsetDateTime;
 
 /***
  * REST controller for GET,POST,PUT and DELETE methods for ReportedOverlimitTransaction entities.

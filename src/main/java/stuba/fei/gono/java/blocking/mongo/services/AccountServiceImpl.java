@@ -9,13 +9,17 @@ import stuba.fei.gono.java.pojo.Account;
 import java.util.Optional;
 
 /***
- * Implementation of AccountService for use with MongoDB that Uses CRUD repository.
- * @see AccountService
+ * <div class="en">Implementation of AccountService using CRUD operations and auto generated instance of
+ * AccountRepository.</div>
+ * <div class="sk">Implementácia AccountService pomocou CRUD operácií a automaticky generovanej
+ * inštancie AccountRepository.</div>
+ * @see AccountRepository
  */
 @Service
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
 
+    @Autowired
     public AccountServiceImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
