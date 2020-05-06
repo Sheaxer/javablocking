@@ -87,9 +87,11 @@ public class ReportedOverlimitTransactionServiceImpl implements ReportedOverlimi
                                                        @NotNull ReportedOverlimitTransaction transaction) {
         transaction.setId(id);
         transaction.setModificationDate(OffsetDateTime.now());
-        if(transactionRepository.existsById(id))
+        if(!transactionRepository.existsById(id))
             transaction.setState(State.CREATED);
         nextSequenceService.needsUpdate(sequenceName,id);
+        if(transaction.getState() == null)
+            transaction.setState(State.CREATED);
         transactionRepository.save(transaction);
         return transaction;
     }

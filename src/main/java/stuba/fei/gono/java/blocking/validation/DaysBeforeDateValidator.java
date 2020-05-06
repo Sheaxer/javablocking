@@ -6,6 +6,7 @@ import stuba.fei.gono.java.blocking.validation.annotations.DaysBeforeDate;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -33,7 +34,12 @@ public class DaysBeforeDateValidator implements ConstraintValidator<DaysBeforeDa
 
     @Override
     public void initialize(DaysBeforeDate constraintAnnotation) {
-        this.today = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.set(Calendar.HOUR_OF_DAY,0);
+        cal.set(Calendar.MINUTE,0);
+        cal.set(Calendar.SECOND,0);
+        this.today = cal.getTime();
         days = (constraintAnnotation.days() == 0 ? days : constraintAnnotation.days());
         log.info(String.valueOf(days));
         /*if(days==0)

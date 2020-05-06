@@ -45,7 +45,6 @@ public class ReportedOverlimitTransaction {
     /***
      * State of order presented to user on FE, value is mapped based on provided BE technical states.
      */
-    @NotNull(message = "STATE_INVALID")
     private State state;
 
     /***
@@ -98,6 +97,7 @@ public class ReportedOverlimitTransaction {
     @FutureOrPresent(message = "INVALID_DATE_IN_PAST")
     @DaysBeforeDate(message = "FIELD_INVALID_TOO_NEAR_IN_FUTURE")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    @BankingDay(message = "INVALID_DATE")
     private Date transferDate;
 
     private String note;
@@ -131,7 +131,7 @@ public class ReportedOverlimitTransaction {
      * Object representing organisation unit where client want to realize withdraw.
      */
     @DBRef
-    @NotNull(message = "ORGANISATIONUNITID_NOT_VALID")
+    @NotNull(message = "ORGANISATIONUNITID_INVALID")
     @JsonDeserialize(using = OrganisationUnitDeserializer.class)
     @JsonSerialize(using = OrganisationUnitSerializer.class)
     private OrganisationUnit organisationUnitID;
@@ -140,7 +140,7 @@ public class ReportedOverlimitTransaction {
      * Object representing employer who entered an transaction. In this case report over limit withdraw.
      */
     @DBRef
-    @NotNull(message = "CREATEDBY_NOT_VALID")
+    @NotNull(message = "CREATEDBY_INVALID")
     @JsonDeserialize(using = EmployeeDeserializer.class)
     @JsonSerialize(using = EmployeeSerializer.class)
     private Employee createdBy;
