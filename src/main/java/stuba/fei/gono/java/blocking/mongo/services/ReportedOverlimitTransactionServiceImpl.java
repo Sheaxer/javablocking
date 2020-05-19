@@ -107,7 +107,7 @@ public class ReportedOverlimitTransactionServiceImpl implements ReportedOverlimi
      * </div>
      * <div class="sk">true ak entita existovala, jej stav nebol State.CLOSED a bola zmazaná, false ak entita
      * neexistovala.</div>
-     * @throws ReportedOverlimitTransactionBadRequestException <div class="id">in case the entity couldn't
+     * @throws ReportedOverlimitTransactionBadRequestException <div class="en">in case the entity couldn't
      * be deleted because its state was State.CLOSED.</div>
      * <div class="sk">ak entita nemohla byť zmazaná, pretože jej stav bol State.CLOSED</div>
      */

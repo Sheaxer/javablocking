@@ -41,8 +41,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     }
 
     /***
-     * Permits access to SIGN_UP_URL and sets need to authenticate access to any other requests. Adds
-     * JWTAuthenticationFilter and JWTAuthorizationFilter to security filters and sets STATELESS session creation policy
+     * <div class="en">Permits access to SIGN_UP_URL and sets need to authenticate access to any other endpoints. Adds
+     * JWTAuthenticationFilter and JWTAuthorizationFilter to security filters and sets STATELESS session creation
+     * policy.</div><div class="sk">Povolí prístup k SIGN_UP_URL a nastaví potrebu authentikácie na povolenie
+     * prístupu k iným endpointom. Pridá inštancie tried JWTAuthenticationFilter a JWTAuthorizationFilter do
+     * bezpečnostných filtrov a nastaví politiku vytvárania session-ov na STATELESS.</div>
      * @see JWTAuthenticationFilter
      * @see JWTAuthorizationFilter
      * @see SessionCreationPolicy

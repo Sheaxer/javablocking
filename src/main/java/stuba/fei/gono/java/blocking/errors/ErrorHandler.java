@@ -75,7 +75,8 @@ public class ErrorHandler {
     }
 
     /***
-     * Handles the HttpMessageNotReadableException
+     * <div class="en">Handles the HttpMessageNotReadableException.</div>
+     * <div class="sk">Spracováva výnimky typu HttpMessageNotReadableException.</div>
      * @param ex caught exception.
      * @return error code.
      */
